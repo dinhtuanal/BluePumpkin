@@ -13,3 +13,18 @@ D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\refint\DataAccess
 D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
 D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
 D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\appsettings.json
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.deps.json
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.runtimeconfig.json
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.dll
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
+C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll

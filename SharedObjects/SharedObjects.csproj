@@ -5,9 +5,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ValueObjects\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>

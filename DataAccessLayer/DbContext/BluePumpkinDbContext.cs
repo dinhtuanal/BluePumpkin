@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DbContext
 {
-    internal class BluePumpkinDbContext : IdentityDbContext
+    public class BluePumpkinDbContext : IdentityDbContext
     {
         public BluePumpkinDbContext(DbContextOptions<BluePumpkinDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder builder)
