@@ -1,0 +1,15 @@
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\bin\Debug\net6.0\appsettings.json
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.deps.json
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.runtimeconfig.json
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.dll
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\bin\Debug\net6.0\DataAccessLayer.pdb
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.AssemblyReference.cache
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfoInputs.cache
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfo.cs
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.dll
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
+D:\TaiLieu\SEM 3\EProject\API\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
