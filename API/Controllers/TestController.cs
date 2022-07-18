@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
+using SharedObjects.ValueObjects;
 using SharedObjects.ViewModels;
 
 namespace API.Controllers
@@ -17,7 +18,6 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("test/")]
         public async Task<ResponseResult> Add(TestViewModel model)
         {
             if (!ModelState.IsValid)

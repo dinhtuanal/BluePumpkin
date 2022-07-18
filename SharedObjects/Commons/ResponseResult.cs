@@ -26,11 +26,5 @@ namespace SharedObjects.Commons
             StatusCode = statusCode;
             Notifications = notifications;
         }
-        public ResponseResult(int statusCode, string message, List<string> notifications)
-        {
-            StatusCode = statusCode;
-            Message = message;
-            Notifications = notifications;
-        }
     }
 }
