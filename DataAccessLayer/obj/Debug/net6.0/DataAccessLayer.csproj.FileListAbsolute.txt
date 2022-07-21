@@ -28,3 +28,6 @@ C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\refint\Dat
 C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
 C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
 C:\Users\HP\Source\Repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
+C:\Users\HP\source\repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\SharedObjects.dll
+C:\Users\HP\source\repos\BluePumpkin\DataAccessLayer\bin\Debug\net6.0\SharedObjects.pdb
+C:\Users\HP\source\repos\BluePumpkin\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CopyComplete

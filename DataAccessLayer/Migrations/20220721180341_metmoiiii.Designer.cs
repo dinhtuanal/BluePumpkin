@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BluePumpkinDbContext))]
-    [Migration("20220718145236_demo")]
-    partial class demo
+    [Migration("20220721180341_metmoiiii")]
+    partial class metmoiiii
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,12 +39,24 @@ namespace DataAccessLayer.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -90,26 +102,172 @@ namespace DataAccessLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
-                            AccessFailedCount = 0,
-                            BirtthDay = new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "338107a9-b2bc-43b6-b749-0a846360697b",
-                            Email = "dinhtuanal@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "dinhtuanal@gmail.com",
-                            NormalizedUserName = "dinhtuanal",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO9QwndoHXTcchrgkw7ibkkfmjg267yARsEa8SH2uQbaD2AWNckWiuRfQwPN5Un5Hw==",
-                            PhoneNumber = "0999686888",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "dinhtuanal"
-                        });
+            modelBuilder.Entity("DataAccessLayer.Entities.ContactSupport", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Phone_Number")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Skype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactSupports");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Event", b =>
+                {
+                    b.Property<Guid>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("EventStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TimeEnd")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("TimeStart")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("EventId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.JoinEvent", b =>
+                {
+                    b.Property<Guid>("JoinEventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("ntext");
+
+                    b.Property<Guid?>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("JoinEventStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JoinEventId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("JoinEvents");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Prize", b =>
+                {
+                    b.Property<Guid>("PrizeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Distributed")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PrizeName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("PrizeId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Prizes");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.PrizeDistribution", b =>
+                {
+                    b.Property<Guid>("PrizeDistributionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("JoinEventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PrizeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Ranking")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("PrizeDistributionId");
+
+                    b.HasIndex("JoinEventId");
+
+                    b.ToTable("PrizeDistributions");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Test", b =>
@@ -123,6 +281,7 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("TestName")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -156,15 +315,6 @@ namespace DataAccessLayer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "8D04DCE2-969A-435D-BBA4-DF3F325983DC",
-                            ConcurrencyStamp = "e311ca2e-6604-4d05-99b8-a2bf337ada12",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -252,13 +402,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
-                            RoleId = "8D04DCE2-969A-435D-BBA4-DF3F325983DC"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -278,6 +421,41 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.JoinEvent", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("DataAccessLayer.Entities.Event", "Event")
+                        .WithMany("JoinEvents")
+                        .HasForeignKey("EventId")
+                        .HasConstraintName("FK_JoinEvents_Events");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Prize", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.Event", "Event")
+                        .WithMany("Prizes")
+                        .HasForeignKey("EventId")
+                        .HasConstraintName("FK_Prizes_Event");
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.PrizeDistribution", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.JoinEvent", "JoinEvent")
+                        .WithMany()
+                        .HasForeignKey("JoinEventId");
+
+                    b.Navigation("JoinEvent");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -329,6 +507,13 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Event", b =>
+                {
+                    b.Navigation("JoinEvents");
+
+                    b.Navigation("Prizes");
                 });
 #pragma warning restore 612, 618
         }

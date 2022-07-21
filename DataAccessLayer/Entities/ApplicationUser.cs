@@ -10,6 +10,10 @@ namespace DataAccessLayer.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser() : base()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }

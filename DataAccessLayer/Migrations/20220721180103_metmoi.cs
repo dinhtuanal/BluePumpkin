@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class demo : Migration
+    public partial class metmoi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,10 @@ namespace DataAccessLayer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<int>(type: "int", nullable: false),
                     BirtthDay = table.Column<DateTime>(type: "datetime", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -50,11 +54,45 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ContactSupports",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone_Number = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Skype = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContactSupports", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    EventName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EventStatus = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Content = table.Column<string>(type: "ntext", nullable: true),
+                    TimeStart = table.Column<DateTime>(type: "datetime", nullable: false),
+                    TimeEnd = table.Column<DateTime>(type: "datetime", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.EventId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tests",
                 columns: table => new
                 {
                     TestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
-                    TestName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    TestName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
@@ -168,20 +206,77 @@ namespace DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8D04DCE2-969A-435D-BBA4-DF3F325983DC", "e311ca2e-6604-4d05-99b8-a2bf337ada12", "admin", "admin" });
+            migrationBuilder.CreateTable(
+                name: "JoinEvents",
+                columns: table => new
+                {
+                    JoinEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    JoinEventStatus = table.Column<int>(type: "int", nullable: false),
+                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Description = table.Column<string>(type: "ntext", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JoinEvents", x => x.JoinEventId);
+                    table.ForeignKey(
+                        name: "FK_JoinEvents_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_JoinEvents_Events",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId");
+                });
 
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BirtthDay", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "69BD714F-9576-45BA-B5B7-F00649BE00DE", 0, new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "338107a9-b2bc-43b6-b749-0a846360697b", "dinhtuanal@gmail.com", true, false, null, "dinhtuanal@gmail.com", "dinhtuanal", "AQAAAAEAACcQAAAAEO9QwndoHXTcchrgkw7ibkkfmjg267yARsEa8SH2uQbaD2AWNckWiuRfQwPN5Un5Hw==", "0999686888", false, "", false, "dinhtuanal" });
+            migrationBuilder.CreateTable(
+                name: "Prizes",
+                columns: table => new
+                {
+                    PrizeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    PrizeName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Content = table.Column<string>(type: "ntext", nullable: true),
+                    Amount = table.Column<int>(type: "int", nullable: false),
+                    Distributed = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prizes", x => x.PrizeId);
+                    table.ForeignKey(
+                        name: "FK_Prizes_Event",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId");
+                });
 
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "8D04DCE2-969A-435D-BBA4-DF3F325983DC", "69BD714F-9576-45BA-B5B7-F00649BE00DE" });
+            migrationBuilder.CreateTable(
+                name: "PrizeDistributions",
+                columns: table => new
+                {
+                    PrizeDistributionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    JoinEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PrizeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Ranking = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrizeDistributions", x => x.PrizeDistributionId);
+                    table.ForeignKey(
+                        name: "FK_PrizeDistributions_JoinEvents_JoinEventId",
+                        column: x => x.JoinEventId,
+                        principalTable: "JoinEvents",
+                        principalColumn: "JoinEventId");
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -221,6 +316,26 @@ namespace DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JoinEvents_ApplicationUserId",
+                table: "JoinEvents",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JoinEvents_EventId",
+                table: "JoinEvents",
+                column: "EventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrizeDistributions_JoinEventId",
+                table: "PrizeDistributions",
+                column: "JoinEventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prizes_EventId",
+                table: "Prizes",
+                column: "EventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -241,13 +356,28 @@ namespace DataAccessLayer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ContactSupports");
+
+            migrationBuilder.DropTable(
+                name: "PrizeDistributions");
+
+            migrationBuilder.DropTable(
+                name: "Prizes");
+
+            migrationBuilder.DropTable(
                 name: "Tests");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "JoinEvents");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Events");
         }
     }
 }

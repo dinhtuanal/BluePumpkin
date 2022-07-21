@@ -29,4 +29,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SharedObjects\SharedObjects.csproj" />
+  </ItemGroup>
+
 </Project>

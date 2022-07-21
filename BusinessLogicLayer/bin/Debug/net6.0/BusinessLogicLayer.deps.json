@@ -870,7 +870,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.7",
           "Microsoft.Extensions.Configuration": "6.0.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "6.0.0",
-          "Microsoft.Extensions.Configuration.Json": "6.0.0"
+          "Microsoft.Extensions.Configuration.Json": "6.0.0",
+          "SharedObjects": "1.0.0"
         },
         "runtime": {
           "DataAccessLayer.dll": {}
