@@ -59,6 +59,7 @@ builder.Services.AddSwaggerGen(c =>
 #region DInjector
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITestService, TestService>();
+builder.Services.AddTransient<IEventService, EventService>();
 #endregion
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>

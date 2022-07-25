@@ -33,7 +33,7 @@ namespace BusinessLogicLayer.Implements
             var user = new ApplicationUser();
             user.UserName = model.UserName;
             user.FirstName = model.FirstName;
-            user.LastName= model.LastName;
+            user.LastName = model.LastName;
             user.Country = model.Country;
             user.AvataUrl = model.AvataUrl;
             user.Email = model.Email;
@@ -52,6 +52,7 @@ namespace BusinessLogicLayer.Implements
                 errors.Add(error.Description);
             }
             return new ResponseResult(400, errors);
+
         }
 
         public async Task<ResponseResult> Delete(string userId)
