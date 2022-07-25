@@ -24,7 +24,8 @@ namespace DataAccessLayer.DbContext
             builder.ApplyConfiguration(new PrizeConfiguration());
             builder.ApplyConfiguration(new PrizeDistributionConfiguration());
             builder.ApplyConfiguration(new TestConfiguration());
-            //builder.Seed();
+            builder.ApplyConfiguration(new QuestionConfiguration());
+            builder.Seed();
         }
         public DbSet<Test> Tests { get; set; }
         public DbSet<ContactSupport> ContactSupports{ get; set; }
@@ -32,6 +33,7 @@ namespace DataAccessLayer.DbContext
         public DbSet<Event> Events{ get; set; }
         public DbSet<Prize> Prizes{ get; set; }
         public DbSet<PrizeDistribution> PrizeDistributions{ get; set; }
+        public DbSet<Question> Questions{ get; set; }
 
     }
 }

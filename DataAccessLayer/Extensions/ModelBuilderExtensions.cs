@@ -51,11 +51,11 @@ namespace DataAccessLayer.Extensions
             });
 
             // Seed data admin 1
-            var userId2 = "69BD714F-9576-45BA-B5B7-F00649BE00DE";
+            var userId2 = "47ACE1B1-5476-41AA-A41D-0CE223F5A45C";
             var hasher2 = new PasswordHasher<ApplicationUser>();
             modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
             {
-                Id = userId,
+                Id = userId2,
                 UserName = "hoangvanviet",
                 NormalizedUserName = "hoangvanviet",
                 FirstName = "Hoang Van",

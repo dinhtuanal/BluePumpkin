@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BluePumpkinDbContext))]
-    [Migration("20220721180341_metmoiiii")]
-    partial class metmoiiii
+    [Migration("20220722143751_seedData")]
+    partial class seedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,6 +102,52 @@ namespace DataAccessLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
+                            AccessFailedCount = 0,
+                            BirtthDay = new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "63d06b4c-3d81-4e76-8cfe-8b9f7430a788",
+                            Country = "Quang Tri, Viet Nam",
+                            Email = "dinhtuanal@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Le Dinh",
+                            Gender = 1,
+                            LastName = "Tuan",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "dinhtuanal@gmail.com",
+                            NormalizedUserName = "dinhtuanal",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMOoGA4WBDhN3Sguia3IDdv074JYtvIEYuxHcTN2oa8f/j7iypZg4S2zegVENhowiw==",
+                            PhoneNumber = "0999686888",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "dinhtuanal"
+                        },
+                        new
+                        {
+                            Id = "47ACE1B1-5476-41AA-A41D-0CE223F5A45C",
+                            AccessFailedCount = 0,
+                            BirtthDay = new DateTime(1991, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "828d8456-3b39-4679-8f06-d8a7b2212d23",
+                            Country = "Dak Lak, Viet Nam",
+                            Email = "hoangvanviet@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Hoang Van",
+                            Gender = 1,
+                            LastName = "Viet",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "hoangvanviet@gmail.com",
+                            NormalizedUserName = "hoangvanviet",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC9/ATJc78VVNWnOIPoAVslM7x9+qzigKKHsYkG71DlGYVYcex8S50h8I0Jus+eeqQ==",
+                            PhoneNumber = "0888444777",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "hoangvanviet"
+                        });
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.ContactSupport", b =>
@@ -175,11 +221,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("(newid())");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("ntext");
@@ -195,7 +238,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("JoinEventId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("CreatedBy");
 
                     b.HasIndex("EventId");
 
@@ -270,6 +313,28 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("PrizeDistributions");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Question", b =>
+                {
+                    b.Property<Guid>("QuestionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("QuestionId");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.Test", b =>
                 {
                     b.Property<Guid>("TestId")
@@ -315,6 +380,15 @@ namespace DataAccessLayer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8D04DCE2-969A-435D-BBA4-DF3F325983DC",
+                            ConcurrencyStamp = "364d2d34-2a45-4346-b927-325f016101cc",
+                            Name = "admin",
+                            NormalizedName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -402,6 +476,18 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
+                            RoleId = "8D04DCE2-969A-435D-BBA4-DF3F325983DC"
+                        },
+                        new
+                        {
+                            UserId = "47ACE1B1-5476-41AA-A41D-0CE223F5A45C",
+                            RoleId = "8D04DCE2-969A-435D-BBA4-DF3F325983DC"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -426,8 +512,9 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("DataAccessLayer.Entities.JoinEvent", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
+                        .WithMany("JoinEvents")
+                        .HasForeignKey("CreatedBy")
+                        .HasConstraintName("FK_JoinEvents_ApplicationUser");
 
                     b.HasOne("DataAccessLayer.Entities.Event", "Event")
                         .WithMany("JoinEvents")
@@ -507,6 +594,11 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("JoinEvents");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Event", b =>

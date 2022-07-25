@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class metmoi : Migration
+    public partial class configEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,6 +85,20 @@ namespace DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events", x => x.EventId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Questions",
+                columns: table => new
+                {
+                    QuestionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
+                    Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Answer = table.Column<string>(type: "ntext", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questions", x => x.QuestionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,16 +228,15 @@ namespace DataAccessLayer.Migrations
                     JoinEventStatus = table.Column<int>(type: "int", nullable: false),
                     EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Description = table.Column<string>(type: "ntext", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedBy = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JoinEvents", x => x.JoinEventId);
                     table.ForeignKey(
-                        name: "FK_JoinEvents_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_JoinEvents_ApplicationUser",
+                        column: x => x.CreatedBy,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -318,9 +331,9 @@ namespace DataAccessLayer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JoinEvents_ApplicationUserId",
+                name: "IX_JoinEvents_CreatedBy",
                 table: "JoinEvents",
-                column: "ApplicationUserId");
+                column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JoinEvents_EventId",
@@ -363,6 +376,9 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Prizes");
+
+            migrationBuilder.DropTable(
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Tests");

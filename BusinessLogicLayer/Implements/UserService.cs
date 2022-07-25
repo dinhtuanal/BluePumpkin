@@ -28,9 +28,68 @@ namespace BusinessLogicLayer.Implements
             _configuration = configuration;
         }
 
-        public Task<ResponseResult> Add(AddUserViewModel model)
+        public async Task<ResponseResult> Add(AddUserViewModel model)
         {
-            throw new NotImplementedException();
+            var user = new ApplicationUser();
+            user.UserName = model.UserName;
+            user.FirstName = model.FirstName;
+            user.LastName= model.LastName;
+            user.Country = model.Country;
+            user.AvataUrl = model.AvataUrl;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Gender = (Gender)model.Gender;
+            user.BirtthDay = model.BirthDay;
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                return new ResponseResult(200);
+            }
+            var errors = new List<string>();
+            foreach (var error in result.Errors)
+            {
+                errors.Add(error.Description);
+            }
+            return new ResponseResult(400, errors);
+        }
+
+        public async Task<ResponseResult> Delete(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return new ResponseResult(404);
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return new ResponseResult(200);
+            }
+            var errors = new List<string>();
+            foreach (var error in result.Errors)
+            {
+                errors.Add(error.Description);
+            }
+            return new ResponseResult(400, errors);
+        }
+
+        public List<ApplicationUser> GetAll()
+        {
+            return _userManager.Users.ToList();
+        }
+
+        public async Task<ApplicationUser> GetById(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new BluePumpkinException("Can not find user");
+            }
+            else
+            {
+                return user;
+            }
         }
 
         public async Task<ResponseResult> Login(LoginViewModel model)
@@ -45,7 +104,7 @@ namespace BusinessLogicLayer.Implements
                 var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (!result.Succeeded)
                 {
-                    return new ResponseResult(400, "Mật khẩu không đúng");
+                    return new ResponseResult(400, "Password incorrect !");
                 }
                 else
                 {
@@ -83,6 +142,32 @@ namespace BusinessLogicLayer.Implements
                     return new ResponseResult(200, strToken);
                 }
             }
+        }
+
+        public async Task<ResponseResult> Update(UpdateUserViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                throw new BluePumpkinException("Can not fin user");
+            }
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Country = model.Country;
+            user.AvataUrl = model.AvataUrl;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Gender = (Gender)model.Gender;
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return new ResponseResult(200, "Update success !");
+            }
+            var errors = new List<string>();
+            foreach (var error in result.Errors)
+            {
+                errors.Add(error.Description);
+            }
+            return new ResponseResult(400, errors);
         }
     }
 }

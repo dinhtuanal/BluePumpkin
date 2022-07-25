@@ -12,12 +12,14 @@ namespace DataAccessLayer.Entities
     {
         public ApplicationUser() : base()
         {
-            Id = Guid.NewGuid().ToString();
+            JoinEvents = new HashSet<JoinEvent>();
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string AvataUrl { get; set; }
         public string Country { get; set; }
         public Gender Gender { get; set; }
         public DateTime? BirtthDay { get; set; }
+        public ICollection<JoinEvent> JoinEvents { get; set; }
     }
 }

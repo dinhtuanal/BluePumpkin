@@ -14,10 +14,16 @@ namespace SharedObjects.ViewModels
         [Required(ErrorMessage = "Email required !")]
         [EmailAddress(ErrorMessage = "Must be email !")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Fist Name required !")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Last Name required !")]
+        public string LastName { get; set; }
+        [Required(ErrorMessage = "Country required !")]
+        public string Country { get; set; }
         [Required(ErrorMessage = "Phone number required !")]
+        public string AvataUrl { get; set; }
         public string PhoneNumber { get; set; }
-        [Required(ErrorMessage = "City required !")]
-        public string City { get; set; }
+        public int Gender { get; set; }
         [Required(ErrorMessage = "Birthday required !")]
         [DataType(DataType.DateTime, ErrorMessage = "Must be type datetime")]
         public DateTime BirthDay { get; set; }

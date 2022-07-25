@@ -1,4 +1,5 @@
-﻿using SharedObjects.Commons;
+﻿using DataAccessLayer.Entities;
+using SharedObjects.Commons;
 using SharedObjects.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,10 @@ namespace BusinessLogicLayer.Interfaces
     public interface IUserService
     {
         Task<ResponseResult> Login(LoginViewModel model);
-
         Task<ResponseResult> Add(AddUserViewModel model);
-        /*Task<ResponseResult> Update(UpdateUserViewModel model);
+        Task<ResponseResult> Update(UpdateUserViewModel model);
         Task<ResponseResult> Delete(string userId);
-        List<IdentityUser> GetAll();
-        Task<IdentityUser> GetById(string userId)*/
+        List<ApplicationUser> GetAll();
+        Task<ApplicationUser> GetById(string userId);
     }
 }

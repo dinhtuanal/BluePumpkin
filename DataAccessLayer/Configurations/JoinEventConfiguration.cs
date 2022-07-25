@@ -18,8 +18,12 @@ namespace DataAccessLayer.Configurations
             entity.Property(x => x.Description).HasColumnType("ntext");
             entity.HasOne(e => e.Event)
                 .WithMany(j => j.JoinEvents)
-                .HasForeignKey(e => e.Event)
+                .HasForeignKey(e => e.EventId)
                 .HasConstraintName("FK_JoinEvents_Events");
+            entity.HasOne(u => u.ApplicationUser)
+                .WithMany(j => j.JoinEvents)
+                .HasForeignKey(u => u.CreatedBy)
+                .HasConstraintName("FK_JoinEvents_ApplicationUser");
 
         }
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BluePumpkinDbContext))]
-    [Migration("20220721180103_metmoi")]
-    partial class metmoi
+    [Migration("20220722143705_configEntities")]
+    partial class configEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -175,11 +175,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("(newid())");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("ntext");
@@ -195,7 +192,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("JoinEventId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("CreatedBy");
 
                     b.HasIndex("EventId");
 
@@ -268,6 +265,28 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("JoinEventId");
 
                     b.ToTable("PrizeDistributions");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Question", b =>
+                {
+                    b.Property<Guid>("QuestionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("(newid())");
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("QuestionId");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Test", b =>
@@ -426,8 +445,9 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("DataAccessLayer.Entities.JoinEvent", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
+                        .WithMany("JoinEvents")
+                        .HasForeignKey("CreatedBy")
+                        .HasConstraintName("FK_JoinEvents_ApplicationUser");
 
                     b.HasOne("DataAccessLayer.Entities.Event", "Event")
                         .WithMany("JoinEvents")
@@ -507,6 +527,11 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("JoinEvents");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Event", b =>
