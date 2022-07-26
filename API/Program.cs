@@ -60,6 +60,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITestService, TestService>();
 builder.Services.AddTransient<IEventService, EventService>();
+builder.Services.AddTransient<IPrizeService, PrizeService>();
 #endregion
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
