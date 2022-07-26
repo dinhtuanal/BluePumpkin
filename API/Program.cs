@@ -61,6 +61,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITestService, TestService>();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IPrizeService, PrizeService>();
+builder.Services.AddTransient<IJoinEventService, JoinEventService>();
 #endregion
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>

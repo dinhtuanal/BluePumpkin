@@ -52,10 +52,6 @@ namespace API.Controllers
         [Route("get/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            if(id == null)
-            {
-                return BadRequest("Please input id !");
-            }
             var result = await _eventService.GetById(id);
             return Ok(result);
         }
@@ -63,10 +59,6 @@ namespace API.Controllers
         [Route("delete/{id}")]
         public async Task<ResponseResult> Delete(string id)
         {
-            if (id == null)
-            {
-                return new ResponseResult(500, "Please input id !");
-            }
             var result = await _eventService.Delete(id);
             if (result == 0)
             {
