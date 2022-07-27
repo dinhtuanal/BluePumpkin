@@ -105,7 +105,5 @@ namespace API.Controllers
             }
             return BadRequest(result);
         }
-
-
     }
 }

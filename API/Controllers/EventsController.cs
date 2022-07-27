@@ -24,7 +24,7 @@ namespace API.Controllers
             var result = await _eventService.Add(model);
             if(result == 0)
             {
-                return new ResponseResult(400, "Add faild !");
+                return new ResponseResult(400, "Add failed !");
             }
             return new ResponseResult(200, "Add event success !");
 
@@ -44,7 +44,7 @@ namespace API.Controllers
             var result = await _eventService.Update(model);
             if(result == 0)
             {
-                return new ResponseResult(400, "Update faild !");
+                return new ResponseResult(400, "Update failed !");
             }
             return new ResponseResult(200, "Update success");
         }
@@ -62,7 +62,7 @@ namespace API.Controllers
             var result = await _eventService.Delete(id);
             if (result == 0)
             {
-                return new ResponseResult(400, "Delete faild !");
+                return new ResponseResult(400, "Delete failed !");
             }
             return new ResponseResult(200, "Delete event success");
         }
