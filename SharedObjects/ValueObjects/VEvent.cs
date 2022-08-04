@@ -13,6 +13,7 @@ namespace SharedObjects.ValueObjects
         public string EventName { get; set; }
         public EventStatus EventStatus { get; set; }
         public string Title { get; set; }
+        public string ImgUrl { get; set; }
         public string Content { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }

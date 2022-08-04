@@ -27,4 +27,8 @@
     <ProjectReference Include="..\SharedObjects\SharedObjects.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="user-content\" />
+  </ItemGroup>
+
 </Project>

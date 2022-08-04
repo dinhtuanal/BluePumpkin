@@ -110,7 +110,7 @@ namespace DataAccessLayer.Migrations
                             Id = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
                             AccessFailedCount = 0,
                             BirtthDay = new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "ed8073f0-10e5-4628-a73d-a0304ca00037",
+                            ConcurrencyStamp = "01937190-fae1-4493-8c48-e68ab6182d25",
                             Country = "Quang Tri, Viet Nam",
                             Email = "dinhtuanal@gmail.com",
                             EmailConfirmed = true,
@@ -120,7 +120,7 @@ namespace DataAccessLayer.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "dinhtuanal@gmail.com",
                             NormalizedUserName = "dinhtuanal",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMKgGXQtJWvmH6oZG7Q6tzI1UylVZZSSYMGe0YJfxDU2l/Ofgyq36jP0Gz1B6tiUAg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI3d2Mn7af/kiRyb3AuBbw41M07JyQ8jalFU9QX//VxpigafKm6GOg6fT3lupTS6mQ==",
                             PhoneNumber = "0999686888",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -132,7 +132,7 @@ namespace DataAccessLayer.Migrations
                             Id = "47ACE1B1-5476-41AA-A41D-0CE223F5A45C",
                             AccessFailedCount = 0,
                             BirtthDay = new DateTime(1991, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "1c05abd3-5dd4-4638-828f-c3a94bbe5929",
+                            ConcurrencyStamp = "b7fa72b2-bd8a-4569-afe8-c67c384cb68b",
                             Country = "Dak Lak, Viet Nam",
                             Email = "hoangvanviet@gmail.com",
                             EmailConfirmed = true,
@@ -142,7 +142,7 @@ namespace DataAccessLayer.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "hoangvanviet@gmail.com",
                             NormalizedUserName = "hoangvanviet",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBXewDHDw7aE/BOSNe+Xj2uC/jc1+jyPcExvR5Y2VQv6b/eqyZzNcxcw52lEPS9ozg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC1d0PbD/QQYPA8ePf5nNP9GGkvpH2krWJR7YET29JPZqRVfCN1mWVLVcUD0YrEDIA==",
                             PhoneNumber = "0888444777",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -199,6 +199,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("EventStatus")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("TimeEnd")
                         .HasColumnType("datetime");
@@ -386,7 +389,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             Id = "8D04DCE2-969A-435D-BBA4-DF3F325983DC",
-                            ConcurrencyStamp = "b32dc7bb-9e0a-47ce-bd09-263d9c1dc18d",
+                            ConcurrencyStamp = "e94c4146-98b5-41f3-a48c-94d65b7fc254",
                             Name = "admin",
                             NormalizedName = "admin"
                         });

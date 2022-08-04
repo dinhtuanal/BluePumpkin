@@ -1,0 +1,37 @@
+﻿@model List<SharedObjects.ValueObjects.VPrize>
+
+<div class="section-wrapper">
+    <label class="section-title">Prize</label>
+    <div class="table-wrapper">
+        <table id="datatable2" class="table display responsive nowrap">
+            <thead>
+                <tr>
+                    <th class="wd-15p">Name</th>
+                    <th class="wd-15p">Content</th>
+                    <th class="wd-15p">Amount</th>
+                    <th class="wd-15p">Distributed</th>
+                    <th class="wd-15p">Status</th>
+                    <th class="wd-15p">Event</th>
+                    <th class="wd-25p">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-danger">
+                        <td>@item.PrizeName</td>
+                        <td>@item.Content</td>
+                        <td>@item.Amount</td>
+                        <td>@item.Distributed</td>
+                        <td>@item.Status</td>
+                        <td>@item.EventName</td>
+                        <th>
+                            <a href="@Url.Action("update", "prize", new{id= @item.PrizeId})" >Edit</a>  |
+                            <a asp-action="Delete" asp-controller="prize">Delete</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><!-- table-wrapper -->
+</div>

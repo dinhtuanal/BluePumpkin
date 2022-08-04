@@ -1,0 +1,32 @@
+﻿@model List<SharedObjects.ValueObjects.VQuestion>
+
+<div class="section-wrapper">
+    <label class="section-title">Event</label>
+    <div>
+        <button asp-controller="question" asp-action="add" class="btn btn-teal mg-b-20 pd-x-10">Add Question</button>
+    </div>
+    <div class="table-wrapper">
+        <table id="datatable2" class="table display responsive nowrap">
+            <thead>
+                <tr>
+                    <th class="wd-15p">Title</th>
+                    <th class="wd-20p">Answer</th>
+                    <th class="wd-5p">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-danger">
+                        <td>@item.Title</td>
+                        <td>@item.Answer</td>
+                        <th>
+                            <a href="@Url.Action("update", "question", new{id= @item.QuestionId})" >Edit</a>  |
+                            <a asp-action="Delete" asp-controller="Question">Delete</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><!-- table-wrapper -->
+</div>

@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedObjects", "SharedObje
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{7A4E9027-69AF-445B-BA2F-9C09F95B5A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients", "Clients\Clients.csproj", "{1BEBFAFF-F58C-4B54-9872-9207DDDEB1A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients", "Clients\Clients.csproj", "{1BEBFAFF-F58C-4B54-9872-9207DDDEB1A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{9E03F46E-8C06-4CCF-8AC9-B09ABEDFA1D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{5D7BC60F-34DC-49CA-A679-3018CCD55655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{1BEBFAFF-F58C-4B54-9872-9207DDDEB1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BEBFAFF-F58C-4B54-9872-9207DDDEB1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BEBFAFF-F58C-4B54-9872-9207DDDEB1A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E03F46E-8C06-4CCF-8AC9-B09ABEDFA1D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E03F46E-8C06-4CCF-8AC9-B09ABEDFA1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E03F46E-8C06-4CCF-8AC9-B09ABEDFA1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E03F46E-8C06-4CCF-8AC9-B09ABEDFA1D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7BC60F-34DC-49CA-A679-3018CCD55655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7BC60F-34DC-49CA-A679-3018CCD55655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7BC60F-34DC-49CA-A679-3018CCD55655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7BC60F-34DC-49CA-A679-3018CCD55655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

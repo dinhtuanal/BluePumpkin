@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharedObjects.ViewModels
 {
@@ -16,6 +13,7 @@ namespace SharedObjects.ViewModels
         [MinLength(6, ErrorMessage ="Please enter title better than 6 character !")]
         [Required(ErrorMessage ="Title required !")]
         public string Title { get; set; }
+        public IFormFile ImgUrl { get; set; }
         [Required(ErrorMessage ="Content required !")]
         public string Content { get; set; }
         public DateTime TimeStart { get; set; }

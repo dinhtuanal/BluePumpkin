@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.Interfaces
 {
     public interface IEventService
     {
-        public Task<int> Add(EventViewModel model);
+        public Task<int> Add(EventViewModel model, string imgUrl);
         public Task<int> Update(EventViewModel model);
         public Task<int> Delete(string id);
         public List<VEvent> GetAll();

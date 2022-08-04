@@ -1,0 +1,38 @@
+﻿@model SharedObjects.ViewModels.QuestionViewModel
+
+
+<div class="section-wrapper">
+    <label class="section-title">Question</label>
+    <p class="mg-b-20 mg-sm-b-40">Update question</p>
+
+    <div class="form-layout">
+        <form method="post" asp-action="update" asp-controller="question">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <input hidden="hidden" asp-for="QuestionId" />
+            <input hidden="hidden" asp-for="CreatedBy" />
+            <div class="row mg-b-25">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Title:</label><span asp-validation-for="Title" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Title" placeholder="Title">
+                    </div>
+                </div><!-- col-6 -->
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Answer:</label><span asp-validation-for="Answer" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Answer" placeholder="Answer">
+                    </div>
+                </div><!-- col-6 -->
+            </div>
+
+            <div class="form-layout-footer">
+                <button type="submit" class="btn btn-primary bd-0">Save</button>
+                <button asp-controller="Question" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

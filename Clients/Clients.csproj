@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implements\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\SharedObjects\SharedObjects.csproj" />
   </ItemGroup>
 
 </Project>

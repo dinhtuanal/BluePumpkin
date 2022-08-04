@@ -1,3 +1,4 @@
+using API.Helpers;
 using BusinessLogicLayer.Implements;
 using BusinessLogicLayer.Interfaces;
 using DataAccessLayer.DbContext;
@@ -21,7 +22,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEntityFrameworkSqlServer();
 builder.Services.AddDbContextPool<BluePumpkinDbContext>
     (option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BluePumpkinDbContext>();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger eShop Solution", Version = "v1" });
@@ -64,6 +67,7 @@ builder.Services.AddTransient<IPrizeService, PrizeService>();
 builder.Services.AddTransient<IJoinEventService, JoinEventService>();
 builder.Services.AddTransient<IPrizeDistributionService, PrizeDistributionService>();
 builder.Services.AddTransient<IQuestionService, QuestionService>();
+builder.Services.AddTransient<IFileStorageHelper, FileStorageHelper>();
 #endregion
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
@@ -80,6 +84,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(1);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -93,6 +105,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseSession();
+
+app.UseStaticFiles();
 
 app.MapControllers();
 

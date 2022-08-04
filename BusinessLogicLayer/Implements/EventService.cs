@@ -19,7 +19,7 @@ namespace BusinessLogicLayer.Implements
         {
             _context = context;
         }
-        public async Task<int> Add(EventViewModel model)
+        public async Task<int> Add(EventViewModel model, string imgUrl)
         {
             var newEvent = new Event()
             {
@@ -27,6 +27,7 @@ namespace BusinessLogicLayer.Implements
                 EventName = model.EventName,
                 EventStatus = (EventStatus)model.EventStatus,
                 Title = model.Title,
+                ImgUrl = imgUrl,
                 Content = model.Content,
                 TimeStart = model.TimeStart,
                 TimeEnd = model.TimeEnd,
@@ -56,6 +57,7 @@ namespace BusinessLogicLayer.Implements
                 EventName = x.EventName,
                 Title = x.Title,
                 Content = x.Content,
+                ImgUrl = x.ImgUrl,
                 EventStatus = x.EventStatus,
                 CreatedBy = x.CreatedBy,
                 TimeStart = x.TimeStart,

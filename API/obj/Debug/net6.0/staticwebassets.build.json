@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "bUm1vPqwZHJejLhtNIB7WgmMI8ngxypkYrDApg4MvgQ=",
+  "Hash": "E5RDeyJ8lzLwdPYw3X16N5vlxsizxPLS/k3+mkJWeyg=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "API\\wwwroot",
+      "Source": "API",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\note.txt",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "note.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\note.txt"
+    }
+  ]
 }
