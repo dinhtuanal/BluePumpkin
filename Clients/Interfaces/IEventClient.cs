@@ -12,8 +12,8 @@ namespace Clients.Interfaces
     public interface IEventClient
     {
         public Task<ResponseResult> Add(EventViewModel model, string token);
-        public Task<int> Update(EventViewModel model, string token);
-        public Task<int> Delete(string id, string token);
+        public Task<ResponseResult> Update(EventViewModel model, string token);
+        public Task<ResponseResult> Delete(string id, string token);
         public Task<List<VEvent>> GetAll();
         public Task<VEvent> GetById(string id);
     }

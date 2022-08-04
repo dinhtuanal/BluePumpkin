@@ -26,19 +26,18 @@
                 <div class="col-lg-6">
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label mr-2">Event Status: <span asp-validation-for="EventStatus" class="tx-danger"></span></label>
-                        <input class="form-control" asp-for="EventStatus" />
+                        <select class="form-control" asp-for="EventStatus">
+                            <option value="0">InActive</option>
+                            <option value="1">Finished</option>
+                            <option value="2">Happening</option>
+                            <option value="3">Upcomming</option>
+                        </select>
                     </div>
                 </div><!-- col-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="form-group">
                         <label class="form-control-label mr-2">Title: <span asp-validation-for="Title" class="tx-danger"></span></label>
                         <input class="form-control" asp-for="Title" placeholder="Title">
-                    </div>
-                </div><!-- col-6 -->
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-control-label mr-2">Image: <span asp-validation-for="ImgUrl" class="tx-danger"></span></label>
-                        <input class="form-control" asp-for="ImgUrl" value="Choose image">
                     </div>
                 </div><!-- col-6 -->
                 <div class="col-lg-12">
@@ -59,6 +58,7 @@
                         <input class="form-control" asp-for="TimeEnd" placeholder="Time End">
                     </div>
                 </div><!-- col-6 -->
+                <input hidden="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
             </div><!-- row -->
 
             <div class="form-layout-footer">

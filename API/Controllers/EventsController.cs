@@ -22,12 +22,9 @@ namespace API.Controllers
         }
         [HttpPost]
         [Route("add")]
-        [Consumes("multipart/form-data")]
-        public async Task<ResponseResult> Add([FromForm] EventViewModel model)
+        public async Task<ResponseResult> Add( EventViewModel model)
         {
-
-            var imgUrl = await _fileStorageHelper.SaveFileAsync(model.ImgUrl);
-            var result = await _eventService.Add(model, imgUrl);
+            var result = await _eventService.Add(model);
 
             if (result == 0)
             {

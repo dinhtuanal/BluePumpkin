@@ -9,7 +9,6 @@ namespace API.Helpers
 {
     public interface IFileStorageHelper
     {
-    
         Task<string> SaveFileAsync(IFormFile file);
         Task DeleteFileAsync(string fileName);
     }

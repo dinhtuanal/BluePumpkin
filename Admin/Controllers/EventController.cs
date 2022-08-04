@@ -21,13 +21,14 @@ namespace Admin.Controllers
         }
         public IActionResult Add() => View();
         [HttpPost]
-        public async Task<IActionResult> Add([FromForm]EventViewModel model)
+        public async Task<IActionResult> Add(EventViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             var token = User.GetSpecificClaim("token");
+
             var result = await _eventClient.Add(model, token);
             if (result.StatusCode == 200)
             {
@@ -36,6 +37,16 @@ namespace Admin.Controllers
             ViewBag.Token = token;
             ViewBag.Result = result.StatusCode;
             return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var evt = await _eventClient.GetById(id);
+            if (evt == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(evt);
         }
     }
 }

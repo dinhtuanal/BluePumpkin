@@ -19,7 +19,7 @@ namespace BusinessLogicLayer.Implements
         {
             _context = context;
         }
-        public async Task<int> Add(EventViewModel model, string imgUrl)
+        public async Task<int> Add(EventViewModel model)
         {
             var newEvent = new Event()
             {
@@ -27,7 +27,7 @@ namespace BusinessLogicLayer.Implements
                 EventName = model.EventName,
                 EventStatus = (EventStatus)model.EventStatus,
                 Title = model.Title,
-                ImgUrl = imgUrl,
+                ImgUrl = model.ImgUrl,
                 Content = model.Content,
                 TimeStart = model.TimeStart,
                 TimeEnd = model.TimeEnd,
@@ -40,7 +40,7 @@ namespace BusinessLogicLayer.Implements
         public async Task<int> Delete(string id)
         {
             var eventById = await _context.Events.FindAsync(Guid.Parse(id));
-            if (eventById != null)
+            if (eventById == null)
             {
                 throw new BluePumpkinException("Can not find event id");
             }
@@ -63,7 +63,7 @@ namespace BusinessLogicLayer.Implements
                 TimeStart = x.TimeStart,
                 TimeEnd= x.TimeEnd,
             });
-            return vEvents;
+            return vEvents.OrderByDescending(x=>x.TimeStart).OrderByDescending(x=>x.EventStatus).ToList();
         }
 
         public async Task<VEvent> GetById(string id)
@@ -102,7 +102,6 @@ namespace BusinessLogicLayer.Implements
             eventById.TimeEnd = model.TimeEnd;
             _context.Events.Update(eventById);
             return _context.SaveChanges();
-
         }
     }
 }

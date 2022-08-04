@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E5RDeyJ8lzLwdPYw3X16N5vlxsizxPLS/k3+mkJWeyg=",
+  "Hash": "A4JVzdEKGuzYUcHBZd1G+1ZvwbILJNgL3HyfQ0bAbq8=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\1458636_371789276298325_2120056569_n.jpg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "1458636_371789276298325_2120056569_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\1458636_371789276298325_2120056569_n.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\event\\event-default.jpg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "event/event-default.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\event\\event-default.jpg"
+    },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\note.txt",
       "SourceId": "API",
