@@ -1,4 +1,5 @@
 using API.Helpers;
+using API.Middlewares;
 using BusinessLogicLayer.Implements;
 using BusinessLogicLayer.Interfaces;
 using DataAccessLayer.DbContext;
@@ -101,7 +102,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.ConfigureCustomExceptionMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

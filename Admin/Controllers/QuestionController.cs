@@ -60,7 +60,7 @@ namespace Admin.Controllers
             }
             var token = User.GetSpecificClaim("token");
             var result = await _questionClient.Update(model, token);
-            if(result.StatusCode == 200)
+            if (result.StatusCode == 200)
             {
                 return RedirectToAction("Index");
             }

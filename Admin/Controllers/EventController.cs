@@ -34,8 +34,6 @@ namespace Admin.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ViewBag.Token = token;
-            ViewBag.Result = result.StatusCode;
             return View(model);
         }
         [HttpGet]

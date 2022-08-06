@@ -1,0 +1,74 @@
+﻿@model SharedObjects.ViewModels.PrizeViewModel
+@{
+    var events = (List<SharedObjects.ValueObjects.VEvent>)ViewBag.Events;
+}
+@if (ViewBag.Result != null)
+{
+    <p>@ViewBag.Result</p>
+}
+
+<div class="section-wrapper">
+    <label class="section-title">Prize</label>
+    <p class="mg-b-20 mg-sm-b-20">Add Prize</p>
+
+    <div class="form-layout">
+        <form method="post" asp-action="add" asp-controller="prize">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <div class="row mg-b-25">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Name:</label><span asp-validation-for="PrizeName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="PrizeName" placeholder="Prize Name">
+                    </div>
+                </div><!-- col-6 -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Event:</label><span asp-validation-for="Status" class="tx-danger"></span>
+                        <select asp-for="EventId" class="form-control">
+                            @foreach (var item in events)
+                            {
+                                <option value="@item.EventId">@item.EventName</option>
+                            }
+                        </select>
+                    </div><!-- col-6 -->
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Content:</label><span asp-validation-for="Content" class="tx-danger"></span>
+                        <textarea class="form-control" asp-for="Content" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Amount:</label><span asp-validation-for="Amount" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Amount" placeholder="Amount">
+                    </div><!-- col-6 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Distributed:</label><span asp-validation-for="Distributed" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Distributed" placeholder="Distributed">
+                    </div><!-- col-6 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Status:</label><span asp-validation-for="Status" class="tx-danger"></span>
+                        <select asp-for="Status" class="form-control">
+                            <option value="0">InActive</option>
+                            <option value="1">Active</option>
+                        </select>
+                    </div><!-- col-6 -->
+                </div>
+                <input hidden="hidden" asp-for="CreatedBy" value="@User.Identity.Name" /> 
+            </div>
+            <div class="form-layout-footer">
+                <button type="submit" class="btn btn-primary bd-0">Add</button>
+                <button asp-controller="Prize" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

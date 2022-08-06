@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="user-content\" />
     <Folder Include="wwwroot\assets\lib\echarts\extension\" />
     <Folder Include="wwwroot\assets\lib\summernote\lang\" />
   </ItemGroup>

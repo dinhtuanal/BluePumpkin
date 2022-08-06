@@ -39,8 +39,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Prize/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpemVcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Prize/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpemVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Prize/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpemVcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Question/Add.cshtml]

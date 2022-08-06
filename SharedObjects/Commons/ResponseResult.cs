@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SharedObjects.Commons
@@ -25,6 +26,10 @@ namespace SharedObjects.Commons
         {
             StatusCode = statusCode;
             Notifications = notifications;
+        }
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this);
         }
     }
 }

@@ -28,5 +28,13 @@ namespace API.Controllers
             return new ResponseResult(200, "Add Success");
             
         }
+        [HttpGet]
+        public IActionResult Test()
+        {
+            var a = 0;
+            var b = 5 / a;
+            return Ok("hello");
+
+        }
     }
 }
