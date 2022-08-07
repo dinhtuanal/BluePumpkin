@@ -1,6 +1,5 @@
 ﻿using BusinessLogicLayer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.ViewModels;
 
@@ -28,17 +27,12 @@ namespace API.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             var result = await _userService.Login(model);
-            if (result.StatusCode == 200)
-            {
-                return Ok(result);
-            }
-            else if (result.StatusCode == 404)
-            {
-                return NotFound();
-            }
-            return BadRequest(result);
+
+            return Ok(result);
         }
+
         [HttpPost]
         [Route("add")]
         // POST auth/add
