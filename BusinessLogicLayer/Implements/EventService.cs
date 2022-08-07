@@ -42,7 +42,7 @@ namespace BusinessLogicLayer.Implements
             var eventById = await _context.Events.FindAsync(Guid.Parse(id));
             if (eventById == null)
             {
-                throw new BluePumpkinException("Can not find event id");
+                throw new CustomException("Can not find event id", 404);
             }
             _context.Events.Remove(eventById);
             return await _context.SaveChangesAsync();
@@ -71,7 +71,7 @@ namespace BusinessLogicLayer.Implements
             var eventById = await _context.Events.FindAsync(Guid.Parse(id));
             if (eventById == null)
             {
-                throw new BluePumpkinException("Can not find event id");
+                throw new CustomException("Can not find event id", 404);
             }
             var vEvent = new VEvent
             {
@@ -92,7 +92,7 @@ namespace BusinessLogicLayer.Implements
             var eventById = await _context.Events.FindAsync(Guid.Parse(model.EventId));
             if (eventById == null)
             {
-                throw new BluePumpkinException("Can not find event id");
+                throw new CustomException("Can not find event id", 404);
             }
             eventById.EventName = model.EventName;
             eventById.Title = model.Title;

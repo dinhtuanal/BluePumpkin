@@ -41,7 +41,7 @@ namespace BusinessLogicLayer.Implements
             var prizeDistribution = await _context.PrizeDistributions.FindAsync(Guid.Parse(id));
             if (prizeDistribution == null)
             {
-                throw new BluePumpkinException("Can not find prize distribution id !");
+                throw new CustomException("Can not find prize distribution id !", 404);
             }
             _context.PrizeDistributions.Remove(prizeDistribution);
             return await _context.SaveChangesAsync();
@@ -84,7 +84,7 @@ namespace BusinessLogicLayer.Implements
             var prizeDistribution = await _context.PrizeDistributions.FindAsync(Guid.Parse(model.PrizeDistributionId));
             if(prizeDistribution == null)
             {
-                throw new BluePumpkinException("Can not find prize distribution id !");
+                throw new CustomException("Can not find prize distribution id !", 404);
             }
             prizeDistribution.Status = (Status)model.Status;
             prizeDistribution.JoinEventId= Guid.Parse(model.JoinEventId);

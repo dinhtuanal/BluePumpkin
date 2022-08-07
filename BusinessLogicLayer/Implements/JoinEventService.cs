@@ -38,12 +38,12 @@ namespace BusinessLogicLayer.Implements
         {
             if (id == null)
             {
-                throw new BluePumpkinException("Please enter join event id !");
+                throw new CustomException("Please enter join event id !", 400);
             }
             var joinevent = await _context.JoinEvents.FindAsync(Guid.Parse(id));
             if(joinevent == null)
             {
-                throw new BluePumpkinException("Can not find join event id");
+                throw new CustomException("Can not find join event id", 404);
             }
             _context.JoinEvents.Remove(joinevent);
             return await _context.SaveChangesAsync();

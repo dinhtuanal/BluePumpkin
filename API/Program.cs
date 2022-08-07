@@ -102,7 +102,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.ConfigureCustomExceptionMiddleware();
+
+app.UseExceptionMiddleware();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

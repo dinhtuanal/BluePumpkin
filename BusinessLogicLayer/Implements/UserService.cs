@@ -85,7 +85,7 @@ namespace BusinessLogicLayer.Implements
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                throw new BluePumpkinException("Can not find user");
+                throw new CustomException("Can not find user", 404);
             }
             else
             {
@@ -98,7 +98,7 @@ namespace BusinessLogicLayer.Implements
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                return new ResponseResult(404, "Email not exists !");
+                throw new CustomException("Email not exists !", 404);
             }
             else
             {
@@ -150,7 +150,7 @@ namespace BusinessLogicLayer.Implements
             var user = await _userManager.FindByIdAsync(model.Id);
             if (user == null)
             {
-                throw new BluePumpkinException("Can not fin user");
+                throw new CustomException("Can not fin user", 404);
             }
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;

@@ -41,7 +41,7 @@ namespace BusinessLogicLayer.Implements
             var prize = await _context.Prizes.FindAsync(Guid.Parse(id));
             if (prize == null)
             {
-                throw new BluePumpkinException("Can not find prize id !");
+                throw new CustomException("Can not find prize id !", 404);
             }
             _context.Prizes.Remove(prize);
             return await _context.SaveChangesAsync();
@@ -97,7 +97,7 @@ namespace BusinessLogicLayer.Implements
             var prizeById = await _context.Prizes.FindAsync(Guid.Parse(id));
             if (prizeById == null)
             {
-                throw new BluePumpkinException("Can not find prize id");
+                throw new CustomException("Can not find prize id", 404);
             }
             var vPrize = new VPrize
             {
@@ -118,7 +118,7 @@ namespace BusinessLogicLayer.Implements
             var prize = await _context.Prizes.FindAsync(Guid.Parse(model.PrizeId));
             if(prize == null)
             {
-                throw new BluePumpkinException("Can not find prize id");
+                throw new CustomException("Can not find prize id", 404);
             }
             prize.PrizeName = model.PrizeName;
             prize.Content = model.Content;

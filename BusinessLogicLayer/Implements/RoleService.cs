@@ -77,7 +77,7 @@ namespace BusinessLogicLayer.Implements
             var role = await _roleManager.FindByIdAsync(roleId);
             if (role == null)
             {
-                throw new BluePumpkinException("Can not find role");
+                throw new CustomException("Can not find role", 404);
             }
             return role;
         }
