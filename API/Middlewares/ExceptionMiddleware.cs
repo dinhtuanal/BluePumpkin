@@ -3,10 +3,10 @@ using System.Net;
 
 namespace API.Middlewares
 {
-    public class ExceptionMiddleware
+    public class CatchGlobalErrors
     {
         private readonly RequestDelegate _next;
-        public ExceptionMiddleware(RequestDelegate next)
+        public CatchGlobalErrors(RequestDelegate next)
         {
             _next = next;
         }
@@ -24,21 +24,31 @@ namespace API.Middlewares
         }
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
+
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            if (exception.GetType() == typeof(CustomException))
+            {
+                context.Response.StatusCode = ((CustomException)exception).statusCode;
+            }
+            else
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            }
+
             await context.Response.WriteAsync(new ResponseResult()
             {
                 StatusCode = context.Response.StatusCode,
-                Message = exception.Message
+                Message = exception.Message,
             }.ToString());
         }
     }
 
-    public static class ExceptionMiddlewareExtensions
+    public static class CatchGlobalErrorsExtensions
     {
-        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
+        public static void UseExceptionMiddleware(this IApplicationBuilder app)
         {
-            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<CatchGlobalErrors>();
         }
     }
 }

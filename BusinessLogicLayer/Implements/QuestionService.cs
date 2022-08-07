@@ -75,7 +75,7 @@ namespace BusinessLogicLayer.Implements
             var question = await _context.Questions.FindAsync(Guid.Parse(model.QuestionId));
             if (question == null)
             {
-                throw new BluePumpkinException("Can not find question id !");
+                throw new CustomException("Can not find question id !", 404);
             }
             question.Title = model.Title;
             question.Answer = model.Answer;

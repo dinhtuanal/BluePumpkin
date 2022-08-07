@@ -5,13 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SharedObjects.Commons;
 using SharedObjects.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BusinessLogicLayer.Implements
 {
@@ -85,7 +82,7 @@ namespace BusinessLogicLayer.Implements
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                throw new BluePumpkinException("Can not find user");
+                throw new CustomException("Can not find user", 404);
             }
             else
             {
@@ -96,53 +93,51 @@ namespace BusinessLogicLayer.Implements
         public async Task<ResponseResult> Login(LoginViewModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
+
             if (user == null)
             {
-                return new ResponseResult(404, "Email not exists !");
+                throw new CustomException("Email not exists !", 404);
             }
-            else
+
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+            if (!result.Succeeded)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-                if (!result.Succeeded)
-                {
-                    return new ResponseResult(400, "Password incorrect !");
-                }
-                else
-                {
-                    //Xử lý khi email và mật khẩu đúng
-                    List<Claim> claims = new List<Claim>()
+                throw new CustomException("Password incorrect !", 404);
+            }
+
+            List<Claim> claims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim("PhoneNumber", user.PhoneNumber),
                         new Claim("Email" , user.Email),
                         new Claim("Id", user.Id)
                     };
-                    // Add các claim thông tin vào ClaimsIdentity
-                    var claimsIdentity = new ClaimsIdentity(claims);
-                    // Add các claim thông tin quyền vào ClaimsIdentity
-                    var roles = (await _userManager.GetRolesAsync(user)).ToList();
-                    var claimRoles = new List<Claim>();
-                    foreach (var role in roles)
-                    {
-                        claimRoles.Add(new Claim(ClaimTypes.Role, role));
-                    }
-                    claimsIdentity.AddClaims(claimRoles);
-                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 
-                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var claimsIdentity = new ClaimsIdentity(claims);
+            var roles = (await _userManager.GetRolesAsync(user)).ToList();
+            var claimRoles = new List<Claim>();
 
-                    var token = new JwtSecurityToken
-                    (
-                        _configuration["Jwt:Issuer"],
-                        _configuration["Jwt:Audience"],
-                        claimsIdentity.Claims,
-                        expires: DateTime.UtcNow.AddHours(10),
-                        signingCredentials: signIn
-                    );
-                    string strToken = new JwtSecurityTokenHandler().WriteToken(token);
-                    return new ResponseResult(200, strToken);
-                }
+            foreach (var role in roles)
+            {
+                claimRoles.Add(new Claim(ClaimTypes.Role, role));
             }
+
+            claimsIdentity.AddClaims(claimRoles);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken
+            (
+                _configuration["Jwt:Issuer"],
+                _configuration["Jwt:Audience"],
+                claimsIdentity.Claims,
+                expires: DateTime.UtcNow.AddHours(10),
+                signingCredentials: signIn
+            );
+
+            string strToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return new ResponseResult(200, strToken);
         }
 
         public async Task<ResponseResult> Update(UpdateUserViewModel model)
@@ -150,7 +145,7 @@ namespace BusinessLogicLayer.Implements
             var user = await _userManager.FindByIdAsync(model.Id);
             if (user == null)
             {
-                throw new BluePumpkinException("Can not fin user");
+                throw new CustomException("Can not fin user", 404);
             }
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
