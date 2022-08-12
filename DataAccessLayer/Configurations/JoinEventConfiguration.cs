@@ -22,7 +22,7 @@ namespace DataAccessLayer.Configurations
                 .HasConstraintName("FK_JoinEvents_Events");
             entity.HasOne(u => u.ApplicationUser)
                 .WithMany(j => j.JoinEvents)
-                .HasForeignKey(u => u.CreatedBy)
+                .HasForeignKey(u => u.UserId)
                 .HasConstraintName("FK_JoinEvents_ApplicationUser");
 
         }
