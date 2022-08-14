@@ -17,7 +17,7 @@ namespace Clients.Implements
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("api/auth/add", content);
+            var response = await httpClient.PostAsync("api/Auth/add", content);
             var apiResponse = await response.Content.ReadAsStringAsync();
             var responseResult = JsonConvert.DeserializeObject<ResponseResult>(apiResponse);
             return responseResult;
@@ -35,7 +35,7 @@ namespace Clients.Implements
         public async Task<List<ApplicationUser>> GetAll(string token)
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            var response = await httpClient.GetAsync("api/auth/");
+            var response = await httpClient.GetAsync("api/auth/get-all");
             var apiResponse = await response.Content.ReadAsStringAsync();
             var responseResult = JsonConvert.DeserializeObject<List<ApplicationUser>>(apiResponse);
             return responseResult;

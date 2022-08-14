@@ -25,7 +25,7 @@ namespace BusinessLogicLayer.Implements
             {
                 JoinEventId = Guid.NewGuid(),
                 JoinEventStatus = (JoinEventStatus)model.JoinEventStatus,
-                EventId = Guid.Parse(model.JoinEventId),
+                EventId = Guid.Parse(model.EventId),
                 UserId = model.UserId,
                 Description = model.Description,
                 CreatedBy = model.CreatedBy,
@@ -51,17 +51,21 @@ namespace BusinessLogicLayer.Implements
 
         public List<VJoinEvent> GetAll()
         {
-            var joinevents = _context.JoinEvents.ToList();
-            var vJoinevent = joinevents.ConvertAll(x => new VJoinEvent
-            {
-                JoinEventId = x.JoinEventId,
-                JoinEventStatus = x.JoinEventStatus,
-                EventId = x.EventId,
-                UserId = x.UserId,
-                Description = x.Description,
-                CreatedBy = x.CreatedBy,
-            });
-            return vJoinevent;
+            var query = from j in _context.JoinEvents
+                        join e in _context.Events on j.EventId equals e.EventId
+                        join u in _context.Users on j.UserId equals u.Id
+                        select new VJoinEvent
+                        {
+                            JoinEventId = j.JoinEventId,
+                            JoinEventStatus = j.JoinEventStatus,
+                            EventId = j.EventId,
+                            UserId = j.UserId,
+                            Description = j.Description,
+                            CreatedBy = j.CreatedBy,
+                            EventName = e.EventName,
+                            UserName = u.UserName
+                        };
+            return query.ToList();
         }
 
         public async Task<VJoinEvent> GetById(string id)

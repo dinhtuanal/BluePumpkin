@@ -20,8 +20,8 @@ namespace SharedObjects.ViewModels
         public string LastName { get; set; }
         [Required(ErrorMessage = "Country required !")]
         public string Country { get; set; }
-        [Required(ErrorMessage = "Phone number required !")]
         public string AvataUrl { get; set; }
+        [Required(ErrorMessage = "Phone number required !")]
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
         [Required(ErrorMessage = "Birthday required !")]
