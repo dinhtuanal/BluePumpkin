@@ -1,0 +1,83 @@
+﻿@using SharedObjects.ViewModels
+@model AddUserViewModel
+<div class="section-wrapper">
+    <label class="section-title">User</label>
+    <p class="mg-b-20 mg-sm-b-20">Add User</p>
+    <div class="form-layout">
+        <form method="post" asp-action="add" asp-controller="auth">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div asp-validation-summary="All" class="text-danger">
+                        @if (ViewBag.Error != null)
+                        {
+                            @foreach(var item in ViewBag.Error)
+                            {
+                                <p>@item</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mg-b-25">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">UserName:</label><span asp-validation-for="UserName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="UserName" placeholder="Username">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Email:</label><span asp-validation-for="Email" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">FirstName:</label><span asp-validation-for="FirstName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">LastName:</label><span asp-validation-for="LastName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="LastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Country:</label><span asp-validation-for="Country" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Country" placeholder="Country">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2 d-block">Phone Number: <span id="phonenumber"></span></label><span asp-validation-for="PhoneNumber" class="tx-danger"></span>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Gender:</label><span asp-validation-for="Gender" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Gender" placeholder="Gender">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">BirthDay:</label><span asp-validation-for="BirthDay" class="tx-danger"></span>
+                        <input class="form-control" asp-for="BirthDay" placeholder="Birthday">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Password:</label><span asp-validation-for="Password" class="tx-danger"></span>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="form-layout-footer">
+                <button type="submit" class="btn btn-primary bd-0">Add</button>
+                <button asp-controller="auth" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

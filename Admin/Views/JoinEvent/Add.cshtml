@@ -1,0 +1,71 @@
+﻿@using DataAccessLayer.Entities
+@using SharedObjects.ValueObjects
+@model SharedObjects.ViewModels.JoinEventViewModel
+@{
+    List<ApplicationUser> users = ViewBag.Users;
+    List<VEvent> events = ViewBag.Events;
+}
+
+<div class="section-wrapper">
+    <label class="section-title">Join event</label>
+    <p class="mg-b-20 mg-sm-b-20">Add</p>
+
+    <div class="form-layout">
+        <form method="post" asp-action="add" asp-controller="joinevent">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <div class="row mg-b-25">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Event Name</label><span asp-validation-for="EventId" class="tx-danger"></span>
+                        <select asp-for="EventId" class="form-control">
+                            @foreach(var item in events)
+                            {
+                                <option>@item.EventName</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">User Name</label><span asp-validation-for="UserId" class="tx-danger"></span>
+                        <select asp-for="UserId" class="form-control">
+                            @foreach(var item in users)
+                            {
+                                <option>@item.UserName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Status</label><span asp-validation-for="UserId" class="tx-danger"></span>
+                        <select asp-for="JoinEventStatus" class="form-control">
+                            <option value="0">InActive</option>
+                            <option value="1">Failed</option>
+                            <option value="2">Peding</option>
+                            <option value="3">Accepted</option>
+                            <option value="4">Won</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Status</label><span asp-validation-for="UserId" class="tx-danger"></span>
+                        <textarea rows=5 asp-for="Description" class="form-control"></textarea>
+                    </div>
+                </div>
+                <input hidden="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
+            </div><!-- row -->
+
+            <div class="form-layout-footer">
+                <button type="submit" class="btn btn-primary bd-0">Add</button>
+                <button asp-controller="Event" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

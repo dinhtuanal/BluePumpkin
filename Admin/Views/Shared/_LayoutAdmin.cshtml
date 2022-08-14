@@ -44,7 +44,7 @@
     <div class="slim-header">
         <div class="container">
             <div class="slim-header-left">
-                <h2 class="slim-logo"><a href="index.html">slim<span>.</span></a></h2>
+                <h2 class="slim-logo"><a href="index.html">BluePumpkin<span>.</span></a></h2>
 
                 <div class="search-box">
                     <input type="text" class="form-control" placeholder="Search">
@@ -168,7 +168,7 @@
                 </div><!-- dropdown -->
                 <div class="dropdown dropdown-c">
                     <a href="#" class="logged-user" data-toggle="dropdown">
-                        <img src="" alt="">
+                        <img src="~/images/avata-default.png" alt="">
                         <span>@User.Identity.Name</span>
                         <i class="fa fa-angle-down"></i>
                     </a>
@@ -203,87 +203,6 @@
                             <li><a href="index5.html">Dashboard 05</a></li>
                         </ul>
                     </div><!-- sub-item -->
-                </li>
-                <li class="nav-item with-sub mega-dropdown">
-                    <a class="nav-link" href="#">
-                        <i class="icon ion-ios-filing-outline"></i>
-                        <span>UI Elements</span>
-                    </a>
-                    <div class="sub-item">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <label class="section-label">Basic Elements</label>
-                                <div class="row">
-                                    <div class="col">
-                                        <ul>
-                                            <li><a href="elem-accordion.html">Accordion</a></li>
-                                            <li><a href="elem-alerts.html">Alerts</a></li>
-                                            <li><a href="elem-buttons.html">Buttons</a></li>
-                                            <li><a href="elem-cards.html">Cards</a></li>
-                                            <li><a href="elem-carousel.html">Carousel</a></li>
-                                            <li><a href="elem-dropdowns.html">Dropdown</a></li>
-                                            <li><a href="elem-icons.html">Icons</a></li>
-                                            <li><a href="elem-images.html">Images</a></li>
-                                            <li><a href="elem-lists.html">Lists</a></li>
-                                        </ul>
-                                    </div><!-- col -->
-                                    <div class="col-lg">
-                                        <ul>
-                                            <li><a href="elem-modal.html">Modal</a></li>
-                                            <li><a href="elem-media.html">Media Object</a></li>
-                                            <li><a href="elem-navigation.html">Navigation</a></li>
-                                            <li><a href="elem-pagination.html">Pagination</a></li>
-                                            <li><a href="elem-tooltip.html">Tooltip</a></li>
-                                            <li><a href="elem-popover.html">Popover</a></li>
-                                            <li><a href="elem-progress.html">Progress</a></li>
-                                            <li><a href="elem-spinner.html">Spinner</a></li>
-                                            <li><a href="elem-typography.html">Typography</a></li>
-                                        </ul>
-                                    </div><!-- col -->
-                                </div><!-- row -->
-                            </div><!-- col -->
-                            <div class="col-lg mg-t-30 mg-lg-t-0">
-                                <label class="section-label">Charts</label>
-                                <ul>
-                                    <li><a href="chart-morris.html">Morris Charts</a></li>
-                                    <li><a href="chart-flot.html">Flot Charts</a></li>
-                                    <li><a href="chart-chartjs.html">ChartJS</a></li>
-                                    <li><a href="chart-echarts.html">ECharts</a></li>
-                                    <li><a href="chart-chartist.html">Chartist</a></li>
-                                    <li><a href="chart-rickshaw.html">Rickshaw</a></li>
-                                    <li><a href="chart-sparkline.html">Sparkline</a></li>
-                                    <li><a href="chart-peity.html">Peity</a></li>
-                                </ul>
-                            </div><!-- col -->
-                            <div class="col-lg mg-t-30 mg-lg-t-0">
-                                <label class="section-label">Maps</label>
-                                <ul>
-                                    <li><a href="map-google.html">Google Maps</a></li>
-                                    <li><a href="map-leaflet.html">Leaflet Maps</a></li>
-                                    <li><a href="map-vector.html">Vector Maps</a></li>
-                                </ul>
-
-                                <label class="section-label mg-t-20">Tables</label>
-                                <ul>
-                                    <li><a href="table-basic.html">Basic Table</a></li>
-                                    <li><a href="table-datatable.html">Data Table</a></li>
-                                </ul>
-                            </div><!-- col -->
-                            <div class="col-lg mg-t-30 mg-lg-t-0">
-                                <label class="section-label">Helper / Utilities</label>
-                                <ul>
-                                    <li><a href="util-background.html">Background</a></li>
-                                    <li><a href="util-border.html">Border</a></li>
-                                    <li><a href="util-height.html">Height</a></li>
-                                    <li><a href="util-margin.html">Margin</a></li>
-                                    <li><a href="util-padding.html">Padding</a></li>
-                                    <li><a href="util-position.html">Position</a></li>
-                                    <li><a href="util-typography.html">Typography</a></li>
-                                    <li><a href="util-width.html">Width</a></li>
-                                </ul>
-                            </div><!-- col -->
-                        </div><!-- row -->
-                    </div><!-- dropdown-menu -->
                 </li>
                 <li class="nav-item with-sub">
                     <a class="nav-link" href="#">
@@ -364,6 +283,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" asp-action="index" asp-controller="Role">
+                        <i class="icon ion-wrench"></i>
+                        <span>Role</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="widgets.html">
                         <i class="icon ion-ios-analytics-outline"></i>
                         <span>Widgets</span>
@@ -395,7 +320,7 @@
         </div><!-- container -->
     </div><!-- slim-footer -->
 
-    <script src="~/assets/lib/jquery/js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
     <script src="~/assets/lib/popper.js/js/popper.js"></script>
     <script src="~/assets/lib/bootstrap/js/bootstrap.js"></script>
     <script src="~/assets/lib/jquery.cookie/js/jquery.cookie.js"></script>
@@ -404,5 +329,7 @@
     <script src="~/assets/lib/jquery.sparkline.bower/js/jquery.sparkline.min.js"></script>
     <script src="~/assets/js/ResizeSensor.js"></script>
     <script src="~/assets/js/slim.js"></script>
+    <script src="~/js/bootbox.min.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

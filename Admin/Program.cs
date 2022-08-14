@@ -14,10 +14,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     option.AccessDeniedPath = "/Auth/Login";
 });
 builder.Services.AddTransient<IUserClient, UserClient>();
+builder.Services.AddTransient<IRoleClient, RoleClient>();
 builder.Services.AddTransient<IEventClient, EventClient>();
 
 builder.Services.AddTransient<IQuestionClient, QuestionClient>();
 builder.Services.AddTransient<IPrizeClient, PrizeClient>();
+builder.Services.AddTransient<IJoinEventClient, JoinEventClient>();
+builder.Services.AddTransient<IPrizeDistributionClient, PrizeDistributionClient>();
 
 var app = builder.Build();
 
@@ -30,6 +33,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
