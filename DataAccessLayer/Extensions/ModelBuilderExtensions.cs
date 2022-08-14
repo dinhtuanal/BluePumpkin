@@ -13,7 +13,7 @@ namespace DataAccessLayer.Extensions
     public static class ModelBuilderExtensions
     {
         public static void Seed(this ModelBuilder modelBuilder) {
-            #region tạo tài khoản và quyền
+            #region add account and role
             //Role admin
             var roleId = "8D04DCE2-969A-435D-BBA4-DF3F325983DC";
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
@@ -21,6 +21,14 @@ namespace DataAccessLayer.Extensions
                 Id = roleId,
                 Name = "admin",
                 NormalizedName = "admin",
+            });
+
+            var roleStaffId = "1E0B4271-BDC6-4DFD-8190-9F992926EE72";
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = roleStaffId,
+                Name = "staff",
+                NormalizedName = "staff",
             });
 
             // Seed data admin 1
