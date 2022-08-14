@@ -76,5 +76,10 @@ namespace Admin.Controllers
             }
             return View(model);
         }
+        public async Task<JsonResult> GetByEventId(string evtId)
+        {
+            var prizes = await _prizeClient.GetByEventId(evtId);
+            return Json(new {result = prizes});
+        }
     }
 }
