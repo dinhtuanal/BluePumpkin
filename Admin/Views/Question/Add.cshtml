@@ -1,6 +1,15 @@
 ﻿@model SharedObjects.ViewModels.QuestionViewModel
 
-
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="question">Question</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add</li>
+        </ol>
+        <h6 class="slim-pagetitle">Question</h6>
+    </div><!-- slim-pageheader -->
+}
 <div class="section-wrapper">
     <label class="section-title">Question</label>
     <p class="mg-b-20 mg-sm-b-40">Add question</p>
@@ -22,9 +31,10 @@
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label class="form-control-label mr-2">Answer:</label><span asp-validation-for="Answer" class="tx-danger"></span>
-                        <input class="form-control" asp-for="Answer" placeholder="@User.Identity.Name">
+                        <textarea rows="5" class="form-control" asp-for="Answer"></textarea>
                     </div>
                 </div><!-- col-6 -->
+                <input hidden="hidden" class="form-control" asp-for="Answer" placeholder="@User.Identity.Name">
             </div>
 
             <div class="form-layout-footer">

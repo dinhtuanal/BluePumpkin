@@ -2,11 +2,17 @@
 @{
     var events = (List<SharedObjects.ValueObjects.VEvent>)ViewBag.Events;
 }
-@if (ViewBag.Result != null)
-{
-    <p>@ViewBag.Result</p>
+=
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="auth">Prize</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update</li>
+        </ol>
+        <h6 class="slim-pagetitle">Prize</h6>
+    </div><!-- slim-pageheader -->
 }
-
 <div class="section-wrapper">
     <label class="section-title">Prize</label>
     <p class="mg-b-20 mg-sm-b-20">Add Prize</p>

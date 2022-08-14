@@ -1,10 +1,12 @@
 ﻿using Clients.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
 using SharedObjects.ViewModels;
 
 namespace Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class QuestionController : Controller
     {
         private readonly IQuestionClient _questionClient;

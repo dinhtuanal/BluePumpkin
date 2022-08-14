@@ -13,7 +13,7 @@ using System.Text;
 
 namespace Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="admin")]
     public class AuthController : Controller
     {
         private readonly IUserClient _userClient;
@@ -76,7 +76,7 @@ namespace Admin.Controllers
                 };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, authProperty);
 
-                return Redirect("/Event/Index");
+                return Redirect("Index");
             }
             else
             {
@@ -103,6 +103,12 @@ namespace Admin.Controllers
             principal.AddIdentity(claimsIdentity);
             #endregion
             return principal;
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Auth");
         }
 
     }

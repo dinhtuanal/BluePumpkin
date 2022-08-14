@@ -6,7 +6,7 @@ using SharedObjects.ViewModels;
 
 namespace Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="admin")]
     public class EventController : Controller
     {
         private readonly IEventClient _eventClient;

@@ -1,9 +1,18 @@
 ﻿@model List<SharedObjects.ValueObjects.VQuestion>
 
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Question</li>
+        </ol>
+        <h6 class="slim-pagetitle">Question</h6>
+    </div><!-- slim-pageheader -->
+}
 <div class="section-wrapper">
     <label class="section-title">Event</label>
     <div>
-        <button asp-controller="question" asp-action="add" class="btn btn-teal mg-b-20 pd-x-10">Add Question</button>
+        <a asp-controller="question" asp-action="add" class="btn btn-teal mg-b-20 pd-x-10">Add Question</a>
     </div>
     <div class="table-wrapper">
         <table id="datatable2" class="table display responsive nowrap">
@@ -30,3 +39,9 @@
         </table>
     </div><!-- table-wrapper -->
 </div>
+
+@section Scripts{
+    <script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="~/js/load_table.js"></script>
+}
