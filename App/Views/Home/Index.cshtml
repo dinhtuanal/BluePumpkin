@@ -1,8 +1,43 @@
-﻿@{
+﻿@model dynamic
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-events">
+    <div class="event-list">
+        <h5>Events</h5>
+        <div class="content">
+            @{
+                foreach (var item in Model.events)
+                {
+
+                    <div class="even">
+
+                        <div class="event-content">
+                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                            <div class="even-desc">
+                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>@item.Title</a><br/>
+                                @item.Content
+                            </div>
+                        </div>
+                        <button class="event-action">Tham gia</button>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+    <div class="nav">
+        <p>Recent winners</p>
+        <ol class="list_win_person">
+            <li class="win_person_item">Nguyen Van A</li>
+            <li class="win_person_item">Nguyen Van A</li>
+            <li class="win_person_item">Nguyen Van A</li>
+            <li class="win_person_item">Nguyen Van A</li>
+            <li class="win_person_item">Nguyen Van A</li>
+        </ol>
+    </div>
+
 </div>
+

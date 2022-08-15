@@ -1,24 +1,37 @@
 ﻿using App.Models;
+using App.Services.Implements;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Dynamic;
 
 namespace App.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Event _event;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Event eventBluePumpkin)
         {
             _logger = logger;
+            _event = eventBluePumpkin;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var events = await _event.getEvents();
+            dynamic myModel = new ExpandoObject();
+            myModel.events = events;
+            return View(myModel);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Detail(string id)
+        {
+            var result = await _event.getEvent(id);
+            return View(result);
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

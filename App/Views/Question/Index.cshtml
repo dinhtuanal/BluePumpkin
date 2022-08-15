@@ -1,0 +1,27 @@
+﻿@model List<QuestionModel>
+
+@{
+    ViewData["Title"] = "Questions";
+}
+
+<div >
+    <div class="row">
+        <h1>Frequently asked questions</h1>
+    </div>
+    <div class="row">
+        @{
+            foreach (var question in Model)
+            {
+                <div class="col-4 mb-3" style="width: 18rem;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@question.Title</h5>
+                            <p class="card-text">@question.Answer</p>
+                            <a class="nav-link text-white btn btn-primary" asp-area="" asp-controller="Question" asp-action="Detail" asp-route-id=@question.QuestionId>View details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

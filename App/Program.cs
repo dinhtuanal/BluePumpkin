@@ -1,7 +1,11 @@
+using App.Services.Implements;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped < Question,Question>();
+builder.Services.AddScoped<Event, Event>();
 
 var app = builder.Build();
 
