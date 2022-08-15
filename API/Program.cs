@@ -62,6 +62,7 @@ builder.Services.AddSwaggerGen(c =>
 
 #region DInjector
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IRoleService, RoleService>();
 builder.Services.AddTransient<ITestService, TestService>();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IPrizeService, PrizeService>();

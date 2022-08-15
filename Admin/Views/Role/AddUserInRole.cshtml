@@ -1,0 +1,43 @@
+﻿@using DataAccessLayer.Entities
+@model List<ApplicationUser>
+@section Scripts{
+    <script src="~/js/adduserinrole.js"></script>
+}
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="role">Role</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add user in role</li>
+        </ol>
+        <h6 class="slim-pagetitle">User</h6>
+    </div><!-- slim-pageheader -->
+}
+<div class="section-wrapper">
+    <label class="section-title">User Role</label>
+    <p class="mg-b-20 mg-sm-b-40">Add or remove user in role <span id="roleName">@ViewBag.RoleName</span></p>
+    <div class="table-responsive">
+        <table class="table mg-b-0">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.UserName</th>
+                        <td>
+                            <a data-user="@item.UserName" href="#" class="addUserInRole text-light">
+                                <i class="icon ion-person-add bg-success p-2"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- section-wrapper -->

@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model List<IdentityRole>
+
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="auth">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add</li>
+        </ol>
+        <h6 class="slim-pagetitle">User</h6>
+    </div><!-- slim-pageheader -->
+}
+<div class="section-wrapper">
+    <label class="section-title">All role</label>
+
+    <div class="table-responsive">
+        <table class="table mg-b-0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Name</td>
+                        <td>
+                            <a data-toggle="tooltip" data-original-title="Add user in this role" class="text-light mr-2"  href="@Url.Action("AddUserInRole", "Role", new {rolename= @item.Name})" >
+                                <i class="icon ion-person-add bg-success p-2"></i>
+                            </a>
+                            <a data-toggle="tooltip" data-original-title="Remove user in this role" class="text-light mr-2" href="@Url.Action("RemoveUserInRole", "Role", new {rolename= @item.Name})" >
+                                <i class="icon ion-person bg-danger p-2"></i>
+                            </a> 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

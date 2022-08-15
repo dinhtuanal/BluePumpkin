@@ -13,7 +13,7 @@ using System.Text;
 
 namespace Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="admin")]
     public class AuthController : Controller
     {
         private readonly IUserClient _userClient;
@@ -24,15 +24,36 @@ namespace Admin.Controllers
             _configuration = configuration;
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var token = User.GetSpecificClaim("token");
+            var users = await _userClient.GetAll(token);
+            return View(users);
         }
+
+        public IActionResult Add() => View();
+        [HttpPost]
+        public async Task<IActionResult> Add(AddUserViewModel model)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _userClient.Add(model, token);
+            ViewBag.Error = result.Notifications;
+            if (result.StatusCode == 200)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
         [AllowAnonymous]
         public async Task<IActionResult> Login()
         {
             var token = User.GetSpecificClaim("token");
-            return View();
+            if (string.IsNullOrEmpty(token))
+            {
+                return View();
+            }
+            return RedirectToAction("index","home");
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -55,7 +76,7 @@ namespace Admin.Controllers
                 };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, authProperty);
 
-                return Redirect("/Event/Index");
+                return Redirect("Index");
             }
             else
             {
@@ -83,5 +104,12 @@ namespace Admin.Controllers
             #endregion
             return principal;
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Auth");
+        }
+
     }
 }

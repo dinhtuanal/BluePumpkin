@@ -69,27 +69,31 @@ namespace BusinessLogicLayer.Implements
 
         public async Task<List<VPrize>> GetByEventId(string eventId)
         {
-            var prizes = _context.Prizes.ToList();
-            var vPrizes = prizes.ConvertAll(x => new VPrize
+            var query = from p in _context.Prizes
+                        join e in _context.Events
+                        on p.EventId equals e.EventId
+                        select new VPrize
+                        {
+                            PrizeId = p.PrizeId,
+                            PrizeName = p.PrizeName,
+                            Content = p.Content,
+                            Amount = p.Amount,
+                            Distributed = p.Distributed,
+                            Status = p.Status,
+                            EventId = p.EventId,
+                            CreatedBy = p.CreatedBy,
+                            EventName = e.EventName
+                        };
+            var prizes = query.ToList();
+            List<VPrize> myPrizes = new List<VPrize>();
+            foreach(VPrize prize in prizes)
             {
-                PrizeId = x.PrizeId,
-                PrizeName = x.PrizeName,
-                Content = x.Content,
-                Amount = x.Amount,
-                Distributed = x.Distributed,
-                Status = x.Status,
-                EventId = x.EventId,
-                CreatedBy = x.CreatedBy
-            });
-            var prizesByEventId = new List<VPrize>();
-            foreach(var item in vPrizes)
-            {
-                if(item.EventId == Guid.Parse(eventId))
+                if(prize.EventId == Guid.Parse(eventId))
                 {
-                    prizesByEventId.Add(item);
+                    myPrizes.Add(prize);
                 }
             }
-            return prizesByEventId;
+            return myPrizes;
         }
 
         public async Task<VPrize> GetById(string id)

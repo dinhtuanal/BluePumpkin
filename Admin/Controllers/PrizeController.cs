@@ -1,10 +1,12 @@
 ﻿using Clients.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
 using SharedObjects.ViewModels;
 
 namespace Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class PrizeController : Controller
     {
         private readonly IPrizeClient _prizeClient;
@@ -75,6 +77,11 @@ namespace Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+        public async Task<JsonResult> GetByEventId(string evtId)
+        {
+            var prizes = await _prizeClient.GetByEventId(evtId);
+            return Json(new {result = prizes});
         }
     }
 }

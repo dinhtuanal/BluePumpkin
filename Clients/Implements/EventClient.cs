@@ -50,7 +50,6 @@ namespace Clients.Implements
             var response = await httpClient.PutAsync("api/events", content);
             var apiResponse = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ResponseResult>(apiResponse);
-            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DataAccessLayer.Entities
     {
         public Guid JoinEventId { get; set; }
         public JoinEventStatus JoinEventStatus { get; set; }
-        public Guid? EventId { get; set; }
+        public Guid EventId { get; set; }
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         public string Description { get; set; }

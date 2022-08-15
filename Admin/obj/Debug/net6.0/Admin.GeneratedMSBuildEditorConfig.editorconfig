@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\HP\source\repos\BluePumpkin\Admin
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Auth/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Auth/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -39,6 +47,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/JoinEvent/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9pbkV2ZW50XEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/JoinEvent/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9pbkV2ZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Prize/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpemVcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -61,6 +77,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Question/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25cVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Role/AddUserInRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxBZGRVc2VySW5Sb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Role/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Role/RemoveUserInRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxSZW1vdmVVc2VySW5Sb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/source/repos/BluePumpkin/Admin/Views/Shared/Error.cshtml]

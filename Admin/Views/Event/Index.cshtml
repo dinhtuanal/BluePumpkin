@@ -1,5 +1,13 @@
 ﻿@model List<SharedObjects.ValueObjects.VEvent>
-
+@section SlimPageHeader{
+    <div class="slim-pageheader">
+        <ol class="breadcrumb slim-breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Event</li>
+        </ol>
+        <h6 class="slim-pagetitle">Event</h6>
+    </div><!-- slim-pageheader -->
+}
 <div class="section-wrapper">
     <label class="section-title">Event</label>
     <p class="mg-b-20 mg-sm-b-40">Add event</p>
@@ -36,7 +44,7 @@
                         }
                         <th>
                             <a href="@Url.Action("update", "event", new{id= @item.EventId})">Edit</a>  |
-                            <a href="@Url.Action("delete", "event", new{id= @item.EventId})">Delete</a>
+                            <a href="@Url.Action("delete", "event", new{id= @item.EventId})">Delete</a> 
                         </th>
                     </tr>
 
@@ -46,3 +54,8 @@
         </table>
     </div><!-- table-wrapper -->
 </div>
+@section Scripts{
+    <script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="~/js/load_table.js"></script>
+}
