@@ -1,0 +1,27 @@
+﻿@model EventModel
+
+@{
+    ViewData["Title"] = "Event detail";
+}
+
+<div >
+    <div class="row">
+        <div class="col-9">
+            <div class="box-event-detail">
+                <h2>@Model.Title.ToUpper()</h2><br />
+                <h6>Start date: @Model.TimeStart</h6>
+                <h6>End date: @Model.TimeEnd</h6>
+                <img src="https://wallpapercave.com/wp/wp2349409.jpg" class="img-fluid" alt="Responsive image"><br />
+                <p>@Model.Content</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="box-event-joined">
+                <h5>Joined</h5>
+                <h6>1.Nguyen Van a</h6>
+                <h6>2.Pham van B</h6>
+                <h6>3.Le Dinh Hieu</h6>
+            </div>
+        </div>
+    </div>
+</div>
