@@ -1,11 +1,23 @@
 using App.Services.Implements;
+using App.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped < Question,Question>();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped< Question,Question>();
 builder.Services.AddScoped<Event, Event>();
+builder.Services.AddTransient<IUser, User>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+{
+    option.LoginPath = "/Auth/Login";
+    option.LogoutPath = "/Auth/LogOut";
+    option.AccessDeniedPath = "/Error/Index";
+});
 
 var app = builder.Build();
 
@@ -21,6 +33,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -15,6 +15,6 @@ namespace SharedObjects.ViewModels
         public string AvataUrl { get; set; }
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
     }
 }
