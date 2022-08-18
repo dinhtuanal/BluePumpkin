@@ -19,7 +19,6 @@
                     <th class="wd-15p">UserName</th>
                     <th class="wd-15p">FirstName</th>
                     <th class="wd-15p">LastName</th>
-                    <th class="wd-15p">BirtthDay</th>
                     <th class="wd-15p">Gender</th>
                     <th class="wd-15p">Country</th>
                     <th class="wd-15p">Email</th>
@@ -34,14 +33,12 @@
                         <td>@item.UserName</td>
                         <td>@item.FirstName</td>
                         <td>@item.LastName</td>
-                        <td>@item.BirtthDay</td>
                         <td>@item.Gender</td>
                         <td>@item.Country</td>
                         <td>@item.Email</td>
                         <td>@item.PhoneNumber</td>
                         <th>
-                            <a href="@Url.Action("update", "auth", new{id= @item.Id})">Edit</a>  |
-                            <a asp-action="Delete" asp-controller="auth">Delete</a>
+                            <a href="@Url.Action("update", "auth", new{id= @item.Id})">Edit</a>
                         </th>
                     </tr>
                 }

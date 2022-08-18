@@ -1,4 +1,5 @@
-﻿using Clients.Interfaces;
+﻿using App.Models;
+using App.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -6,54 +7,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using SharedObjects.Commons;
-using SharedObjects.ViewModels;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Admin.Controllers
+namespace App.Controllers
 {
-    [Authorize(Roles ="admin")]
     public class AuthController : Controller
     {
-        private readonly IUserClient _userClient;
+        private readonly IUser _user;
         private readonly IConfiguration _configuration;
-        public AuthController(IUserClient userClient, IConfiguration configuration)
+        public AuthController(IUser user, IConfiguration configuration)
         {
-            _userClient = userClient;
+            _user = user;
             _configuration = configuration;
-
         }
-        public async Task<IActionResult> Index()
-        {
-            var token = User.GetSpecificClaim("token");
-            var users = await _userClient.GetAll(token);
-            return View(users);
-        }
-
-        public IActionResult Add() => View();
-        [HttpPost]
-        public async Task<IActionResult> Add(AddUserViewModel model)
-        {
-            var token = User.GetSpecificClaim("token");
-            var result = await _userClient.Add(model, token);
-            ViewBag.Error = result.Notifications;
-            if (result.StatusCode == 200)
-            {
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
-
         [AllowAnonymous]
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             var token = User.GetSpecificClaim("token");
             if (string.IsNullOrEmpty(token))
             {
                 return View();
             }
-            return RedirectToAction("index","home");
+            return RedirectToAction("index", "home");
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -64,7 +41,7 @@ namespace Admin.Controllers
             {
                 return View(model);
             }
-            var result = await _userClient.Login(model);
+            var result = await _user.Login(model);
             if (result.StatusCode == 200)
             {
 
@@ -76,7 +53,7 @@ namespace Admin.Controllers
                 };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, authProperty);
 
-                return Redirect("Index");
+                return RedirectToAction("Index", "home");
             }
             else
             {
@@ -109,35 +86,6 @@ namespace Admin.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Auth");
-        }
-        public async Task<IActionResult> Update(string id)
-        {
-            var token = User.GetSpecificClaim("token");
-            var user = await _userClient.GetById(id, token);
-            var updateUserVM = new UpdateUserViewModel
-            {
-                Id = id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Country = user.Country,
-                AvataUrl = user.AvataUrl,
-                PhoneNumber = user.PhoneNumber,
-                Gender = (int)user.Gender,
-                BirthDay = user.BirtthDay
-            };
-            return View(updateUserVM);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Update(UpdateUserViewModel model)
-        {
-            var token = User.GetSpecificClaim("token");
-            var result = await _userClient.Update(model, token);
-            ViewBag.Error = result.Notifications;
-            if (result.StatusCode == 200)
-            {
-                return RedirectToAction("Index");
-            }
-            return View(model);
         }
     }
 }
