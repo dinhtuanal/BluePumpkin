@@ -44,7 +44,7 @@ namespace Clients.Implements
         public async Task<ApplicationUser> GetById(string userId, string token)
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            var response = await httpClient.GetAsync("api/auth/" + userId);
+            var response = await httpClient.GetAsync("api/auth/get-by-id/" + userId);
             var apiResponse = await response.Content.ReadAsStringAsync();
             var responseResult = JsonConvert.DeserializeObject<ApplicationUser>(apiResponse);
             return responseResult;

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BluePumpkinDbContext))]
-    [Migration("20220722143751_seedData")]
-    partial class seedData
+    [Migration("20220814100254_update-all")]
+    partial class updateall
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("AvataUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("BirtthDay")
                         .HasColumnType("datetime");
@@ -109,7 +112,7 @@ namespace DataAccessLayer.Migrations
                             Id = "69BD714F-9576-45BA-B5B7-F00649BE00DE",
                             AccessFailedCount = 0,
                             BirtthDay = new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "63d06b4c-3d81-4e76-8cfe-8b9f7430a788",
+                            ConcurrencyStamp = "0405263b-7ef8-4ea8-98e8-218ae86585ee",
                             Country = "Quang Tri, Viet Nam",
                             Email = "dinhtuanal@gmail.com",
                             EmailConfirmed = true,
@@ -119,7 +122,7 @@ namespace DataAccessLayer.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "dinhtuanal@gmail.com",
                             NormalizedUserName = "dinhtuanal",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMOoGA4WBDhN3Sguia3IDdv074JYtvIEYuxHcTN2oa8f/j7iypZg4S2zegVENhowiw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBU2r18xZLQ8yhYt2N2QTsB3AAfhCD/jUkd+73c1gVD1FkAypoQk3AHDX++6LjMxHw==",
                             PhoneNumber = "0999686888",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -131,7 +134,7 @@ namespace DataAccessLayer.Migrations
                             Id = "47ACE1B1-5476-41AA-A41D-0CE223F5A45C",
                             AccessFailedCount = 0,
                             BirtthDay = new DateTime(1991, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "828d8456-3b39-4679-8f06-d8a7b2212d23",
+                            ConcurrencyStamp = "c671f869-94f0-4ffb-b0e3-8890e1e2a996",
                             Country = "Dak Lak, Viet Nam",
                             Email = "hoangvanviet@gmail.com",
                             EmailConfirmed = true,
@@ -141,7 +144,7 @@ namespace DataAccessLayer.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "hoangvanviet@gmail.com",
                             NormalizedUserName = "hoangvanviet",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC9/ATJc78VVNWnOIPoAVslM7x9+qzigKKHsYkG71DlGYVYcex8S50h8I0Jus+eeqQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMAVanxpM+3drkVFbaeZ7G5HwJWLECNGW+XSHrkVplUma00G1Ot+BlDupontT2dR5A==",
                             PhoneNumber = "0888444777",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -199,6 +202,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("EventStatus")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("TimeEnd")
                         .HasColumnType("datetime");
 
@@ -222,25 +228,25 @@ namespace DataAccessLayer.Migrations
                         .HasDefaultValueSql("(newid())");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("ntext");
 
-                    b.Property<Guid?>("EventId")
+                    b.Property<Guid>("EventId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("JoinEventStatus")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("JoinEventId");
 
-                    b.HasIndex("CreatedBy");
-
                     b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("JoinEvents");
                 });
@@ -385,7 +391,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             Id = "8D04DCE2-969A-435D-BBA4-DF3F325983DC",
-                            ConcurrencyStamp = "364d2d34-2a45-4346-b927-325f016101cc",
+                            ConcurrencyStamp = "45710eee-a5f3-4119-ba04-66e1a151c53b",
                             Name = "admin",
                             NormalizedName = "admin"
                         });
@@ -511,15 +517,17 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.JoinEvent", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
-                        .WithMany("JoinEvents")
-                        .HasForeignKey("CreatedBy")
-                        .HasConstraintName("FK_JoinEvents_ApplicationUser");
-
                     b.HasOne("DataAccessLayer.Entities.Event", "Event")
                         .WithMany("JoinEvents")
                         .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK_JoinEvents_Events");
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("JoinEvents")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_JoinEvents_ApplicationUser");
 
                     b.Navigation("ApplicationUser");
 

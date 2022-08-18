@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sTc01tokziXewAo8/rqLKCxKD9k5nD/qzNIq0O1SNhqcRHmEXMivW4rP6oVRq1+kNdz/yiTJnSD68W0LjIjwJw==",
+  "dgSpecHash": "BkDviqE5OknZ8r0aUfJWg6DD6Sfv7nMXFtGdNXxZ1AgXutCQ5i0h3nxrT5htjFEM/jLWuxhQ6MxIN6Mk9d5hog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+  "projectFilePath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

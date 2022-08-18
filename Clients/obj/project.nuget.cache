@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mf+hbEgd35qFQBVFZuAaFzAbrqbeygQT1mk3LHkBdsQaCjhOvgGe7s6SV4ikiRWCUKAUrR2DLd3RoABeokBTwg==",
+  "dgSpecHash": "YjwV9zagu/ZnRjmS0ms9C57GRQcPcKFIKcYhSjm3WYML4O1aCx/8WDyQNI8FY3sNkm74Wumk64rsE4AhrBzKzQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\Clients\\Clients.csproj",
+  "projectFilePath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\Clients\\Clients.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.7\\microsoft.aspnetcore.cryptography.internal.6.0.7.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.7\\microsoft.aspnetcore.cryptography.keyderivation.6.0.7.nupkg.sha512",

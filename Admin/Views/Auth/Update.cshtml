@@ -1,0 +1,68 @@
+﻿@using SharedObjects.ViewModels
+@model UpdateUserViewModel
+@section SlimPageHeader{
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="auth">User</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Update</li>
+    </ol>
+    <h6 class="slim-pagetitle">User</h6>
+</div><!-- slim-pageheader -->
+}
+<div class="section-wrapper">
+    <label class="section-title">User</label>
+    <p class="mg-b-20 mg-sm-b-20">Update User</p>
+    <div class="form-layout">
+        <form method="post" asp-action="update" asp-controller="auth">
+            <div class="row mg-b-25">
+                <input hidden="hidden" asp-for="Id" />
+                <input hidden="hidden" asp-for="AvataUrl" />
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">First Name:</label><span asp-validation-for="FirstName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Last Name:</label><span asp-validation-for="LastName" class="tx-danger"></span>
+                        <input class="form-control" asp-for="LastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Country:</label><span asp-validation-for="Country" class="tx-danger"></span>
+                        <input class="form-control" asp-for="Country" placeholder="Country">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Phone Number:</label><span asp-validation-for="PhoneNumber" class="tx-danger"></span>
+                        <input class="form-control" asp-for="PhoneNumber" placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Gender:</label><span asp-validation-for="Gender" class="tx-danger"></span>
+                        <select class="form-control" asp-for="Gender" placeholder="Gender">
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                            <option value="2">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Birthday:</label><span asp-validation-for="BirthDay" class="tx-danger"></span>
+                        <input type="date" class="form-control" asp-for="BirthDay" placeholder="BirthDay">
+                    </div>
+                </div>
+            </div>
+            <div class="form-layout-footer">
+                <button type="submit" class="btn btn-primary bd-0">Save</button>
+                <button asp-controller="auth" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

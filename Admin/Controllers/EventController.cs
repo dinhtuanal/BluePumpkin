@@ -6,7 +6,7 @@ using SharedObjects.ViewModels;
 
 namespace Admin.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     public class EventController : Controller
     {
         private readonly IEventClient _eventClient;
@@ -45,6 +45,23 @@ namespace Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(evt);
+        }
+        public async Task<IActionResult> Update(string id)
+        {
+            var evt = await _eventClient.GetById(id);
+            var evtVM = new EventViewModel
+            {
+                EventId = id,
+                EventName = evt.EventName,
+                EventStatus = (int)evt.EventStatus,
+                Title = evt.Title,
+                ImgUrl = evt.ImgUrl,
+                Content = evt.Content,
+                TimeStart = evt.TimeStart,
+                TimeEnd = evt.TimeEnd,
+                CreatedBy = evt.CreatedBy
+            };
+            return View(evtVM);
         }
     }
 }

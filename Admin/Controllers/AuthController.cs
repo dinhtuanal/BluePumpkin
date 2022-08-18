@@ -110,6 +110,34 @@ namespace Admin.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Auth");
         }
-
+        public async Task<IActionResult> Update(string id)
+        {
+            var token = User.GetSpecificClaim("token");
+            var user = await _userClient.GetById(id, token);
+            var updateUserVM = new UpdateUserViewModel
+            {
+                Id = id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Country = user.Country,
+                AvataUrl = user.AvataUrl,
+                PhoneNumber = user.PhoneNumber,
+                Gender = (int)user.Gender,
+                BirthDay = user.BirtthDay
+            };
+            return View(updateUserVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateUserViewModel model)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _userClient.Update(model, token);
+            ViewBag.Error = result.Notifications;
+            if (result.StatusCode == 200)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
     }
 }
