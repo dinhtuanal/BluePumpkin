@@ -1,6 +1,7 @@
 ﻿using API.Helpers;
 using BusinessLogicLayer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
@@ -68,6 +69,34 @@ namespace API.Controllers
                 return new ResponseResult(400, "Delete failed !");
             }
             return new ResponseResult(200, "Delete event success");
+        }
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        [Route("uploadImg/{id}")]
+        public async Task<string> UploadImage(string id,IFormFile file)
+        {
+            var imgUrl = await _fileStorageHelper.SaveFileAsync(file);
+            var evt = await _eventService.GetById(id);
+            var evtVM = new EventViewModel
+            {
+                EventId = id,
+                EventName = evt.EventName,
+                EventStatus = (int)evt.EventStatus,
+                Title = evt.Title,
+                Content = evt.Content,
+                TimeStart = evt.TimeStart,
+                TimeEnd = evt.TimeEnd,
+                CreatedBy = evt.CreatedBy,
+                ImgUrl = imgUrl,
+
+            };
+            var result = await _eventService.Update(evtVM);
+            if (result == 0)
+            {
+                return "Can not upload image";
+            }
+            return imgUrl;
+
         }
     }
 }

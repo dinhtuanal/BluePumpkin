@@ -1,4 +1,5 @@
 ﻿using Clients.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using SharedObjects.Commons;
 using SharedObjects.ValueObjects;
@@ -47,7 +48,7 @@ namespace Clients.Implements
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync("api/events", content);
+            var response = await httpClient.PutAsync("api/events/update", content);
             var apiResponse = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ResponseResult>(apiResponse);
         }
