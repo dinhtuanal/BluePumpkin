@@ -1,5 +1,6 @@
 ﻿using Clients.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
 using SharedObjects.ViewModels;
@@ -61,7 +62,24 @@ namespace Admin.Controllers
                 TimeEnd = evt.TimeEnd,
                 CreatedBy = evt.CreatedBy
             };
+            ViewBag.ImgUrl = evt.ImgUrl;
             return View(evtVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(EventViewModel model)
+        {
+            var token = User.GetSpecificClaim("token");
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = await _eventClient.Update(model, token);
+            if (result.StatusCode == 200)
+            {
+                return RedirectToAction("index", "event");
+            }
+            ViewBag.Result = result.StatusCode;
+            return View(model);
         }
     }
 }

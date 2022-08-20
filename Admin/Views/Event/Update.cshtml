@@ -20,6 +20,7 @@
 
     <div class="form-layout">
         <form method="post" asp-action="update" asp-controller="event">
+            <input hidden="hidden" asp-for="EventId" />
             <div class="row">
                 <div class="col-lg-12">
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -41,6 +42,16 @@
                             <option value="2">Happening</option>
                             <option value="3">Upcomming</option>
                         </select>
+                    </div>
+                </div><!-- col-6 -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label mr-2">Upload image:</label>
+                        <input type="file" id="file">
+                        @{
+                            var imgUrl = "https://localhost:44366" + ViewBag.ImgUrl;
+                        }
+                        <img class="imgEvent img-fluid" src="@imgUrl" />
                     </div>
                 </div><!-- col-6 -->
                 <div class="col-lg-12">
@@ -77,3 +88,34 @@
         </form>
     </div><!-- form-layout -->
 </div><!-- section-wrapper -->
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $('#file').change(function(){            
+                var checkImg = jQuery('#file')[0].files[0];
+                if (checkImg != "undefined" && checkImg != undefined) {
+                    var formDataImg = new FormData();
+                    formDataImg.append("file", jQuery('#file')[0].files[0]);
+                    jQuery.ajax({
+                        url: 'https://localhost:44366/api/Events/uploadImg/@Model.EventId',
+                        data: formDataImg,
+                        type: 'POST',
+                        contentType: false,
+                        processData: false,
+                        mimeType: "multipart/form-data",
+                        success: function (data) {
+                            $('.imgEvent').attr('src','https://localhost:44366' + data);
+                            bootbox.alert({
+                                    message: "Upload event img success"
+                                })
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Loi");
+                        }
+                    });
+
+                };
+            });
+        });
+    </script>
+}

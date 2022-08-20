@@ -40,8 +40,14 @@
                             <td>@item.EventName</td>
                             <td>@item.EventStatus</td>
                             <td>@item.TimeStart</td>
-                            <td>@item.TimeEnd</td>
-                        }
+                            @if(@item.TimeEnd < DateTime.Now)
+                            {
+                                <td class="text-danger">@item.TimeEnd</td>
+                            }
+                            else{
+                                <td>@item.TimeEnd</td>
+                            }
+                            }
                         <th>
                             <a href="@Url.Action("update", "event", new{id= @item.EventId})">Edit</a>  |
                             <a href="@Url.Action("delete", "event", new{id= @item.EventId})">Delete</a> 

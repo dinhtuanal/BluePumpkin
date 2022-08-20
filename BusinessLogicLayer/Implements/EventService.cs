@@ -79,6 +79,7 @@ namespace BusinessLogicLayer.Implements
                 EventName = eventById.EventName,
                 Title = eventById.Title,
                 Content = eventById.Content,
+                ImgUrl = eventById.ImgUrl,
                 EventStatus = eventById.EventStatus,
                 CreatedBy = eventById.CreatedBy,
                 TimeStart = eventById.TimeStart,
@@ -97,6 +98,7 @@ namespace BusinessLogicLayer.Implements
             eventById.EventName = model.EventName;
             eventById.Title = model.Title;
             eventById.EventStatus = (EventStatus)model.EventStatus;
+            eventById.ImgUrl = model.ImgUrl;
             eventById.Content = model.Content;
             eventById.TimeStart = model.TimeStart;
             eventById.TimeEnd = model.TimeEnd;
