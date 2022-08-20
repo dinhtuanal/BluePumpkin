@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {}
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\BusinessLogicLayer\\obj\\",
+        "outputPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\BusinessLogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj"
               },
-              "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj"
+              "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
+                "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj"
               }
             }
           }
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\DataAccessLayer\\obj\\",
+        "outputPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,8 +95,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj"
+              "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
+                "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj"
               }
             }
           }
@@ -161,14 +161,14 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
         "projectName": "SharedObjects",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
+        "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\obj\\",
+        "outputPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

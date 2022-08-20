@@ -34,3 +34,21 @@ C:\Users\HP\Source\Repos\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\Busines
 C:\Users\HP\Source\Repos\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\refint\BusinessLogicLayer.dll
 C:\Users\HP\Source\Repos\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.pdb
 C:\Users\HP\Source\Repos\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\ref\BusinessLogicLayer.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\appsettings.json
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\BusinessLogicLayer.deps.json
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\BusinessLogicLayer.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\BusinessLogicLayer.pdb
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\SharedObjects.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\bin\Debug\net6.0\SharedObjects.pdb
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.csproj.AssemblyReference.cache
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.AssemblyInfoInputs.cache
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.AssemblyInfo.cs
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.csproj.CopyComplete
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\refint\BusinessLogicLayer.dll
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\BusinessLogicLayer.pdb
+C:\Users\HP\OneDrive\Máy tính\New folder\BluePumpkin\BusinessLogicLayer\obj\Debug\net6.0\ref\BusinessLogicLayer.dll

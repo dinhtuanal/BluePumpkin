@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class configEntities : Migration
+    public partial class updateall : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,7 @@ namespace DataAccessLayer.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AvataUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     BirtthDay = table.Column<DateTime>(type: "datetime", nullable: true),
@@ -77,6 +78,7 @@ namespace DataAccessLayer.Migrations
                     EventName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EventStatus = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "ntext", nullable: true),
                     TimeStart = table.Column<DateTime>(type: "datetime", nullable: false),
                     TimeEnd = table.Column<DateTime>(type: "datetime", nullable: false),
@@ -226,24 +228,25 @@ namespace DataAccessLayer.Migrations
                 {
                     JoinEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newid())"),
                     JoinEventStatus = table.Column<int>(type: "int", nullable: false),
-                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Description = table.Column<string>(type: "ntext", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JoinEvents", x => x.JoinEventId);
                     table.ForeignKey(
                         name: "FK_JoinEvents_ApplicationUser",
-                        column: x => x.CreatedBy,
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_JoinEvents_Events",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId");
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,6 +294,31 @@ namespace DataAccessLayer.Migrations
                         principalColumn: "JoinEventId");
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "8D04DCE2-969A-435D-BBA4-DF3F325983DC", "45710eee-a5f3-4119-ba04-66e1a151c53b", "admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AvataUrl", "BirtthDay", "ConcurrencyStamp", "Country", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "47ACE1B1-5476-41AA-A41D-0CE223F5A45C", 0, null, new DateTime(1991, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "c671f869-94f0-4ffb-b0e3-8890e1e2a996", "Dak Lak, Viet Nam", "hoangvanviet@gmail.com", true, "Hoang Van", 1, "Viet", false, null, "hoangvanviet@gmail.com", "hoangvanviet", "AQAAAAEAACcQAAAAEMAVanxpM+3drkVFbaeZ7G5HwJWLECNGW+XSHrkVplUma00G1Ot+BlDupontT2dR5A==", "0888444777", false, "", false, "hoangvanviet" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AvataUrl", "BirtthDay", "ConcurrencyStamp", "Country", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "69BD714F-9576-45BA-B5B7-F00649BE00DE", 0, null, new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "0405263b-7ef8-4ea8-98e8-218ae86585ee", "Quang Tri, Viet Nam", "dinhtuanal@gmail.com", true, "Le Dinh", 1, "Tuan", false, null, "dinhtuanal@gmail.com", "dinhtuanal", "AQAAAAEAACcQAAAAEBU2r18xZLQ8yhYt2N2QTsB3AAfhCD/jUkd+73c1gVD1FkAypoQk3AHDX++6LjMxHw==", "0999686888", false, "", false, "dinhtuanal" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "8D04DCE2-969A-435D-BBA4-DF3F325983DC", "47ACE1B1-5476-41AA-A41D-0CE223F5A45C" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "8D04DCE2-969A-435D-BBA4-DF3F325983DC", "69BD714F-9576-45BA-B5B7-F00649BE00DE" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -331,14 +359,14 @@ namespace DataAccessLayer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JoinEvents_CreatedBy",
-                table: "JoinEvents",
-                column: "CreatedBy");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_JoinEvents_EventId",
                 table: "JoinEvents",
                 column: "EventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JoinEvents_UserId",
+                table: "JoinEvents",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PrizeDistributions_JoinEventId",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A4JVzdEKGuzYUcHBZd1G+1ZvwbILJNgL3HyfQ0bAbq8=",
+  "Hash": "xs9AXeAWVvjhX4zEgRa2Gl9VA4CmlVeu6Wqp3T0m1eA=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "API\\wwwroot",
       "Source": "API",
-      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\1458636_371789276298325_2120056569_n.jpg",
+      "Identity": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\1458636_371789276298325_2120056569_n.jpg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "1458636_371789276298325_2120056569_n.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\1458636_371789276298325_2120056569_n.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\event\\event-default.jpg",
+      "Identity": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\event\\event-default.jpg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "event/event-default.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\event\\event-default.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\note.txt",
+      "Identity": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\note.txt",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "RelativePath": "note.txt",
       "AssetKind": "All",

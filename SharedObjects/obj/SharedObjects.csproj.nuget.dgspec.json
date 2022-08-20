@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {}
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
+    "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
         "projectName": "SharedObjects",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
+        "projectPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\SharedObjects.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\BluePumpkin\\SharedObjects\\obj\\",
+        "outputPath": "C:\\Users\\HP\\OneDrive\\Máy tính\\New folder\\BluePumpkin\\SharedObjects\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
