@@ -75,8 +75,12 @@ namespace API.Controllers
         [Route("uploadImg/{id}")]
         public async Task<string> UploadImage(string id,IFormFile file)
         {
-            var imgUrl = await _fileStorageHelper.SaveFileAsync(file);
             var evt = await _eventService.GetById(id);
+            if (!string.IsNullOrEmpty(evt.ImgUrl))
+            {
+                await _fileStorageHelper.DeleteFileAsync(evt.ImgUrl);
+            }
+            var imgUrl = await _fileStorageHelper.SaveFileAsync(file);
             var evtVM = new EventViewModel
             {
                 EventId = id,
@@ -96,7 +100,6 @@ namespace API.Controllers
                 return "Can not upload image";
             }
             return imgUrl;
-
         }
     }
 }
