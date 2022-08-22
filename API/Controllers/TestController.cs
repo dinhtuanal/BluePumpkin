@@ -11,10 +11,12 @@ namespace API.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
+        private readonly IRoleService _roleService;
         private readonly ITestService _testService;
-        public TestController(ITestService testService)
+        public TestController(ITestService testService, IRoleService roleService)
         {
             _testService = testService;
+            _roleService = roleService;
         }
 
         [HttpPost]

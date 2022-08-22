@@ -7,7 +7,6 @@ using SharedObjects.ViewModels;
 
 namespace API.Controllers
 {
-    [Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : ControllerBase
@@ -112,6 +111,12 @@ namespace API.Controllers
         {
             var result = await _roleService.GetUserNotInRole(roleName);
             return Ok(result);
+        }
+        [HttpGet]
+        [Route("tuan/tuan/tuan")]
+        public IActionResult Tuan()
+        {
+            return Ok("Tuan");
         }
     }
 }
