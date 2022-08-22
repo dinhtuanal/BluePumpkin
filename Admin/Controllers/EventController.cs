@@ -76,6 +76,7 @@ namespace Admin.Controllers
             var result = await _eventClient.Update(model, token);
             if (result.StatusCode == 200)
             {
+                TempData["Success"] = "Update event success !";
                 return RedirectToAction("index", "event");
             }
             ViewBag.Result = result.StatusCode;

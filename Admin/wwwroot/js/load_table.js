@@ -10,6 +10,5 @@
             lengthMenu: "Show _MENU_ item/page",
         }
     });
-    $('.dataTables_length').select2({ minimumResultsForSearch: Infinity });
 
 });

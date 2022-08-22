@@ -8,9 +8,12 @@
         <h6 class="slim-pagetitle">Event</h6>
     </div><!-- slim-pageheader -->
 }
+
 <div class="section-wrapper">
     <label class="section-title">Event</label>
-    <p class="mg-b-20 mg-sm-b-40">Add event</p>
+    <div>
+        <a asp-controller="event" asp-action="add" class="btn btn-teal mg-b-20 pd-x-10">Add Event</a>
+    </div>
 
     <div class="table-wrapper">
         <table id="datatable2" class="table display responsive nowrap">
@@ -64,4 +67,13 @@
     <script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
     <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="~/js/load_table.js"></script>
+    <script>
+        $(document).ready(function(){
+            if("@TempData["Success"]"!=null){
+                bootbox.alert({
+                    message: "@TempData["Success"]"
+                });
+            }
+        });
+    </script>
 }

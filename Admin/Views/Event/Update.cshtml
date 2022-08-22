@@ -79,10 +79,11 @@
                     </div>
                 </div><!-- col-6 -->
                 <input hidden="hidden" asp-for="CreatedBy" />
+                <input id="imgPath" hidden="hidden" asp-for="ImgUrl" />
             </div><!-- row -->
 
             <div class="form-layout-footer">
-                <button type="submit" class="btn btn-primary bd-0">Add</button>
+                <button type="submit" class="btn btn-primary bd-0">Update</button>
                 <button asp-controller="Event" asp-action="Index" class="btn btn-secondary bd-0">Back To List</button>
             </div><!-- form-layout-footer -->
         </form>
@@ -106,8 +107,9 @@
                         success: function (data) {
                             $('.imgEvent').attr('src','https://localhost:44366' + data);
                             bootbox.alert({
-                                    message: "Upload event img success"
-                                })
+                                    message: "Upload event img success "
+                            });
+                            $('input#imgPath').val(data);
                         },
                         error: function (xhr, status, error) {
                             console.log("Loi");
