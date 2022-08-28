@@ -1,4 +1,4 @@
-﻿using Clients.Interfaces;
+﻿    using Clients.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -138,6 +138,13 @@ namespace Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Profile(string username)
+        {
+            var token = User.GetSpecificClaim("token");
+            var userLogin = await _userClient.GetByUserName(username, token);
+            return View(userLogin);
         }
     }
 }

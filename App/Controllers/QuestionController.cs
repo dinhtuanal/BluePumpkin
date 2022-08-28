@@ -1,14 +1,15 @@
 ﻿using App.Models;
 using App.Services.Implements;
+using App.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
 {
     public class QuestionController : Controller
     {
-        private readonly Question _question;
+        private readonly IQuestion _question;
 
-        public QuestionController(Question question)
+        public QuestionController(IQuestion question)
         {
             this._question = question;
         }

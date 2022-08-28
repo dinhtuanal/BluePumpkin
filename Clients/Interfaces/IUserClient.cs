@@ -17,5 +17,6 @@ namespace Clients.Interfaces
         Task<ResponseResult> Delete(string userId, string token);
         Task<List<ApplicationUser>> GetAll(string token);
         Task<ApplicationUser> GetById(string userId, string token);
+        Task<ApplicationUser> GetByUserName(string userName, string token);
     }
 }
