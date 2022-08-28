@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.ViewModels;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -98,6 +99,12 @@ namespace API.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+        }
+        [HttpGet]
+        [Route("get-by-username/{username}")]
+        public async Task<IActionResult> GetUserLogin(string username)
+        {
+            return Ok(await _userService.GetByUserName(username));
         }
     }
 }

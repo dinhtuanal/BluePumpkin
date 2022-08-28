@@ -1,5 +1,6 @@
 ﻿using App.Models;
 using App.Services.Implements;
+using App.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Dynamic;
@@ -9,9 +10,9 @@ namespace App.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly Event _event;
+        private readonly IEvent _event;
 
-        public HomeController(ILogger<HomeController> logger, Event eventBluePumpkin)
+        public HomeController(ILogger<HomeController> logger, IEvent eventBluePumpkin)
         {
             _logger = logger;
             _event = eventBluePumpkin;

@@ -12,5 +12,6 @@ namespace BusinessLogicLayer.Interfaces
         Task<ResponseResult> Delete(string userId);
         List<ApplicationUser> GetAll();
         Task<ApplicationUser> GetById(string userId);
+        Task<ApplicationUser> GetByUserName(string username);
     }
 }

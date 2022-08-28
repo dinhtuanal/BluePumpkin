@@ -50,6 +50,15 @@ namespace Clients.Implements
             return responseResult;
         }
 
+        public async Task<ApplicationUser> GetByUserName(string userName, string token)
+        {
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await httpClient.GetAsync("api/Auth/get-by-username/" + userName);
+            var apiResponse = await response.Content.ReadAsStringAsync();
+            var responseResult = JsonConvert.DeserializeObject<ApplicationUser>(apiResponse);
+            return responseResult;
+        }
+
         public async Task<ResponseResult> Login(LoginViewModel model)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");

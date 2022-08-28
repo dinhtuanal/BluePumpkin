@@ -165,5 +165,18 @@ namespace BusinessLogicLayer.Implements
             }
             return new ResponseResult(400, errors);
         }
+        public async Task<ApplicationUser> GetByUserName(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                throw new CustomException("Can not find user", 404);
+            }
+            else
+            {
+                return user;
+            }
+
+        }
     }
 }

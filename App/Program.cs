@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-builder.Services.AddScoped< Question,Question>();
-builder.Services.AddScoped<Event, Event>();
+builder.Services.AddTransient< IQuestion,Question>();
+builder.Services.AddTransient<IEvent, Event>();
 builder.Services.AddTransient<IUser, User>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
