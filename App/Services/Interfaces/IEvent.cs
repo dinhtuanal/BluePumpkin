@@ -6,5 +6,6 @@ namespace App.Services.Interfaces
     {
         public Task<List<EventModel>?> getEvents();
         public Task<EventModel?> getEvent(string id);
+        public Task<List<JoinEvent>?> getJoinEvents();
     }
 }

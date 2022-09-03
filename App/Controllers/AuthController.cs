@@ -87,21 +87,5 @@ namespace App.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Auth");
         }
-        [HttpGet]
-        public async Task<IActionResult> Profile(string username)
-        {
-            var token = User.GetSpecificClaim("token");
-            var userLogin = await _user.GetByUserName(username, token);
-            return View(userLogin);
-        }
-        public async Task<string> GetUserLoginId()
-        {
-            var token = User.GetSpecificClaim("token");
-            var userName = User.FindFirstValue(ClaimTypes.Name);
-            var userLogin = await _user.GetByUserName(userName, token);
-            var id = userLogin.Id;
-            return id;
-           
-        }
     }
 }
