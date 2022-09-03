@@ -4,11 +4,6 @@ using DataAccessLayer.Entities;
 using SharedObjects.Commons;
 using SharedObjects.ValueObjects;
 using SharedObjects.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Implements
 {
@@ -61,9 +56,9 @@ namespace BusinessLogicLayer.Implements
                 EventStatus = x.EventStatus,
                 CreatedBy = x.CreatedBy,
                 TimeStart = x.TimeStart,
-                TimeEnd= x.TimeEnd,
+                TimeEnd = x.TimeEnd,
             });
-            return vEvents.OrderByDescending(x=>x.TimeStart).OrderByDescending(x=>x.EventStatus).ToList();
+            return vEvents.OrderByDescending(x => x.TimeStart).OrderByDescending(x => x.EventStatus).ToList();
         }
 
         public async Task<VEvent> GetById(string id)

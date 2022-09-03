@@ -4,6 +4,52 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="my-slider">
+    <div class="container">
+        <h2>Ongoing events</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="#myCarousel">
+                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                    </a>
+
+                </div>
+
+                <div class="item">
+                    <a href="#myCarousel">
+                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                    </a>
+                </div>
+
+                <div class="item">
+                    <a href="#myCarousel">
+                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <div class="container-events">
     <div class="event-list">
         <h5>Events</h5>
@@ -11,23 +57,58 @@
             @{
                 foreach (var item in Model.events)
                 {
+                    if (item.EventStatus == "0")
+                    {
+                        continue;
+                    }
 
-                    <div class="even">
+                                                                    <div class="even">
 
-                        <div class="event-content">
-                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
-                            <div class="even-desc">
-                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>@item.Title</a><br/>
-                                @item.Content
-                            </div>
-                        </div>
-                        <button class="event-action">Tham gia</button>
-                    </div>
+                                                                        <div class="event-content">
+                                                                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                                                                            <div class="even-desc">
+                                                                                <h6 style="margin:0;padding:0">
+                                                                                    Status -
+                                                                                    @{
+                                        switch (item.EventStatus)
+                                        {
+                                            case "1":
+                                                                                                                                                <text> Finished </text>
+                                                break;
+                                            case "2":
+                                                                                                                                                <text> Happening </text>
+                                                break;
+                                            case "3":
+                                                                                                                                                <text> Upcomming </text>
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                                                                    }
+                                                                                </h6>
+                                                                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                                                                    Event Name: @item.EventName
+                                                                                </a><br />
+                                                                                @item.Content
+                                                                            </div>
+                                                                        </div>
+
+                                                                        @if (item.EventStatus == "3" && User.Identity.Name == null)
+                        {
+                                                                            <a class="event-action" asp-action="login" asp-controller="auth">Login to join the event</a>
+                        }
+                                                                        @if(item.EventStatus == "3" && User.Identity.Name != null)
+                        {
+                                                                        <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
+                        }
+
+                                                                    </div>
 
                 }
             }
         </div>
     </div>
+
     <div class="nav">
         <p>Recent winners</p>
         <ol class="list_win_person">
@@ -40,4 +121,12 @@
     </div>
 
 </div>
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+        })
+    </script>
+}
 

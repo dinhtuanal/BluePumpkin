@@ -24,7 +24,7 @@ namespace BusinessLogicLayer.Implements
             var joinevent = new JoinEvent
             {
                 JoinEventId = Guid.NewGuid(),
-                JoinEventStatus = (JoinEventStatus)model.JoinEventStatus,
+                JoinEventStatus = JoinEventStatus.Peding,
                 EventId = Guid.Parse(model.EventId),
                 UserId = model.UserId,
                 Description = model.Description,

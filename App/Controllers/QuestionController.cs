@@ -1,6 +1,4 @@
-﻿using App.Models;
-using App.Services.Implements;
-using App.Services.Interfaces;
+﻿using App.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers

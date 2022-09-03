@@ -11,6 +11,9 @@ namespace App.Services.Implements
         {
             var response = await httpClient.GetAsync("api/Events/get/" + id);
             var result = await response.Content.ReadAsStringAsync();
+
+            if (result == null) return null;
+
             return JsonConvert.DeserializeObject<EventModel>(result);
         }
 
@@ -18,7 +21,20 @@ namespace App.Services.Implements
         {
             var response = await httpClient.GetAsync("api/Events/get-all");
             var result = await response.Content.ReadAsStringAsync();
+
+            if (result == null) return null;
+
             return JsonConvert.DeserializeObject<List<EventModel>>(result);
+        }
+
+        public async Task<List<JoinEvent>?> getJoinEvents()
+        {
+            var response = await httpClient.GetAsync("api/JoinEvents/get-all");
+            var result = await response.Content.ReadAsStringAsync();
+
+            if (result == null) return null;
+
+            return JsonConvert.DeserializeObject<List<JoinEvent>>(result);
         }
     }
 }
