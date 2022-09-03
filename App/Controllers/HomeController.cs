@@ -1,11 +1,8 @@
 ﻿using App.Models;
 using App.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using SharedObjects.Commons;
-using SharedObjects.ViewModels;
 using System.Diagnostics;
 using System.Dynamic;
-using System.Security.Cryptography.X509Certificates;
 
 namespace App.Controllers
 {
@@ -13,20 +10,23 @@ namespace App.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IEvent _event;
-        private readonly IJointEvent _jointEvent;
 
-        public HomeController(ILogger<HomeController> logger, IEvent eventBluePumpkin, IJointEvent jointEvent)
+        public HomeController(ILogger<HomeController> logger, IEvent eventBluePumpkin)
         {
             _logger = logger;
             _event = eventBluePumpkin;
-            _jointEvent = jointEvent;
         }
 
         public async Task<IActionResult> Index()
         {
             var events = await _event.getEvents();
+            var joinEvents = await _event.getJoinEvents();
+
             dynamic myModel = new ExpandoObject();
+
+            myModel.joinEvents = joinEvents;
             myModel.events = events;
+
             return View(myModel);
         }
 
@@ -41,13 +41,6 @@ namespace App.Controllers
             myModel.Joinevents = joinevents;
 
             return View(myModel);
-        }
-
-        public async Task<JsonResult> JoinEvent(JoinEventViewModel model)
-        {
-            var token = User.GetSpecificClaim("token");
-            var result = await _jointEvent.Add(model, token);
-            return Json(new {result = result});
         }
 
         public IActionResult Contact()

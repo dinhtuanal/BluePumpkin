@@ -62,47 +62,47 @@
                         continue;
                     }
 
-                                                                    <div class="even">
+                    <div class="even">
 
-                                                                        <div class="event-content">
-                                                                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
-                                                                            <div class="even-desc">
-                                                                                <h6 style="margin:0;padding:0">
-                                                                                    Status -
-                                                                                    @{
+                        <div class="event-content">
+                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                            <div class="even-desc">
+                                <h6 style="margin:0;padding:0">
+                                    Status -
+                                    @{
                                         switch (item.EventStatus)
                                         {
                                             case "1":
-                                                                                                                                                <text> Finished </text>
+                                                <text> Finished </text>
                                                 break;
                                             case "2":
-                                                                                                                                                <text> Happening </text>
+                                                <text> Happening </text>
                                                 break;
                                             case "3":
-                                                                                                                                                <text> Upcomming </text>
+                                                <text> Upcomming </text>
                                                 break;
                                             default:
                                                 break;
                                         }
-                                                                                    }
-                                                                                </h6>
-                                                                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                                                                    Event Name: @item.EventName
-                                                                                </a><br />
-                                                                                @item.Content
-                                                                            </div>
-                                                                        </div>
+                                    }
+                                </h6>
+                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                    Event Name: @item.EventName
+                                </a><br />
+                                @item.Content
+                            </div>
+                        </div>
 
-                                                                        @if (item.EventStatus == "3" && User.Identity.Name == null)
+                        @if (item.EventStatus == "3" && User.Identity.Name == null)
                         {
-                                                                            <a class="event-action" asp-action="login" asp-controller="auth">Login to join the event</a>
+                            <a class="event-action" asp-action="login" asp-controller="auth">Login to join the event</a>
                         }
-                                                                        @if(item.EventStatus == "3" && User.Identity.Name != null)
+                        @if (item.EventStatus == "3" && User.Identity.Name != null)
                         {
-                                                                        <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
+                            <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
                         }
 
-                                                                    </div>
+                    </div>
 
                 }
             }
@@ -124,9 +124,7 @@
 @section Scripts{
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
-        $(document).ready(function(){
-            
-        })
+
     </script>
 }
 
