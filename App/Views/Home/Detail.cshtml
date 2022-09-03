@@ -1,6 +1,7 @@
 ﻿@model dynamic
 @{
     ViewData["Title"] = "Event detail";
+    var ImgUrl = "https://localhost:44366/" + @Model.BluePumpkinEvent.ImgUrl;
 }
 
 <div>
@@ -12,7 +13,7 @@
                 <h6>End date: @Model.BluePumpkinEvent.TimeEnd</h6>
                 @if (Model.BluePumpkinEvent.ImgUrl != null)
                 {
-                    <img src="@Model.BluePumpkinEvent.ImgUrl" class="img-fluid" alt="Responsive image">
+                    <img src="@ImgUrl" class="img-fluid" alt="Responsive image">
                 }
                 else
                 {

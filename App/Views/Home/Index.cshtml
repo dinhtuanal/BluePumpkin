@@ -116,15 +116,48 @@
             <li class="win_person_item">Nguyen Van A</li>
             <li class="win_person_item">Nguyen Van A</li>
             <li class="win_person_item">Nguyen Van A</li>
-            <li class="win_person_item">Nguyen Van A</li>
+            <li class="win_person_item">@ViewBag.UserId</li>
+            
         </ol>
     </div>
+    <p id="userLoginId" hidden="hidden">@ViewBag.UserId</p>
+    <p id="createdBy" hidden="hidden">@User.Identity.Name</p>
 
 </div>
 @section Scripts{
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-
-    </script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('body').off('click', '#joinevent').on('click','#joinevent', JoinEvent)
+        function JoinEvent(){
+          var model = new Object();
+          model.joinEventStatus = 0;
+          model.eventId = $(this).data('id');
+          model.description = "";
+          model.userId = $('#userLoginId').text();
+          model.createdBy= $('#createdBy').text();
+          console.log(model);
+          $.ajax({
+            type: 'post',
+            url: '/Home/JoinEvent/add',
+            dataType: 'json',
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            success: function(response){
+                var data = response.result;
+                console.log(data);
+                if(data.statusCode==200){
+                    alert("Add success");
+                }else{
+                    alert("Add faild")
+                }
+            },
+            error: function(err){
+                alert("Error");
+            }
+          })
+      }
+    })
+</script>
 }
 
