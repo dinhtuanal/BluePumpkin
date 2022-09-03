@@ -70,7 +70,22 @@ namespace BusinessLogicLayer.Implements
 
         public async Task<VJoinEvent> GetById(string id)
         {
-            var joinevents = await _context.JoinEvents.FindAsync(Guid.Parse(id));
+            var query = from j in _context.JoinEvents
+                        join e in _context.Events on j.EventId equals e.EventId
+                        join u in _context.Users on j.UserId equals u.Id
+                        select new VJoinEvent
+                        {
+                            JoinEventId = j.JoinEventId,
+                            JoinEventStatus = j.JoinEventStatus,
+                            EventId = j.EventId,
+                            UserId = j.UserId,
+                            Description = j.Description,
+                            CreatedBy = j.CreatedBy,
+                            EventName = e.EventName,
+                            UserName = u.UserName
+                        };
+            return query.Where(e => e.JoinEventId == Guid.Parse(id)).FirstOrDefault();
+            /*var joinevents = await _context.JoinEvents.FindAsync(Guid.Parse(id));
             var vJoinevent =  new VJoinEvent
             {
                 JoinEventId = joinevents.JoinEventId,
@@ -80,7 +95,7 @@ namespace BusinessLogicLayer.Implements
                 Description = joinevents.Description,
                 CreatedBy = joinevents.CreatedBy,
             };
-            return vJoinevent;
+            return vJoinevent;*/
         }
 
         public async Task<int> Update(JoinEventViewModel model)

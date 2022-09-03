@@ -31,6 +31,7 @@ namespace API.Controllers
         [Route("add")]
         public async Task<ResponseResult> Add(JoinEventViewModel model)
         {
+            model.JoinEventStatus = 2;
             var result = await _joinEventService.Add(model);
             if (result == 0)
             {

@@ -32,6 +32,17 @@ namespace BusinessLogicLayer.Implements
                 CreatedBy = model.CreatedBy,
             };
             _context.PrizeDistributions.Add(prizeDistribution);
+            var prize = await _context.Prizes.FindAsync(Guid.Parse(model.PrizeId));
+            if (prize != null)
+            {
+                prize.Distributed += 1;
+                prize.Amount -= 1;
+            }
+            var jevent = await _context.JoinEvents.FindAsync(Guid.Parse(model.JoinEventId));
+            if(jevent != null)
+            {
+                jevent.JoinEventStatus = 0;   
+            }
             return await _context.SaveChangesAsync();
 
         }
@@ -82,14 +93,14 @@ namespace BusinessLogicLayer.Implements
         public async Task<int> Update(PrizeDistributionViewModel model)
         {
             var prizeDistribution = await _context.PrizeDistributions.FindAsync(Guid.Parse(model.PrizeDistributionId));
-            if(prizeDistribution == null)
+            if (prizeDistribution == null)
             {
                 throw new CustomException("Can not find prize distribution id !", 404);
             }
             prizeDistribution.Status = (Status)model.Status;
-            prizeDistribution.JoinEventId= Guid.Parse(model.JoinEventId);
-            prizeDistribution.PrizeId= Guid.Parse(model.PrizeId);
-            prizeDistribution.Ranking= model.Ranking;
+            prizeDistribution.JoinEventId = Guid.Parse(model.JoinEventId);
+            prizeDistribution.PrizeId = Guid.Parse(model.PrizeId);
+            prizeDistribution.Ranking = model.Ranking;
             prizeDistribution.Amount = model.Amount;
             prizeDistribution.CreatedBy = model.CreatedBy;
             _context.PrizeDistributions.Update(prizeDistribution);
