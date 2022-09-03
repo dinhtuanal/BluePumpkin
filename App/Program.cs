@@ -10,7 +10,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped< IQuestion,Question>();
 builder.Services.AddScoped<IEvent, Event>();
 builder.Services.AddTransient<IUser, User>();
-builder.Services.AddTransient<IJointEvent, JointEvent>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
