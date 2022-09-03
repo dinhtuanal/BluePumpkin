@@ -1,0 +1,98 @@
+﻿@using SharedObjects.ValueObjects
+@model List<VPrizeDistribution>
+
+@section SlimPageHeader{
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Prize Distribution</li>
+    </ol>
+    <h6 class="slim-pagetitle">Prize Distribution</h6>
+</div><!-- slim-pageheader -->
+}
+<div class="section-wrapper">
+    <label class="section-title">Prize Distribution</label>
+    <div class="table-wrapper">
+        <table id="datatable2" class="table display responsive nowrap">
+            <thead>
+                <tr>
+                    <th class="wd-15p">Status</th>
+                    <th class="wd-15p">Join Event Id</th>
+                    <th class="wd-15p">Prize Id</th>
+                    <th class="wd-15p">Ranking</th>
+                    <th class="wd-15p">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-danger">
+                        <td>@item.Status</td>
+                        <td><a data-toggle="modal" data-target="#showJoinEvent" id="joinEvent" data-id="@item.JoinEventId" href="">@item.JoinEventId</a></td>
+                        <td><a data-toggle="modal" data-target="#showPrize" id="prize" data-id="@item.PrizeId"  href="">@item.PrizeId</a></td>
+                        <td>@item.Ranking</td>
+                        <td>@item.Amount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><!-- table-wrapper -->
+</div>
+
+@section Scripts{
+<script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
+<script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="~/js/load_table.js"></script>
+<script src="~/js/load_model.js" ></script>
+}
+
+<div id="showJoinEvent" class="modal fade">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content bd-0 bg-transparent rounded overflow-hidden">
+            <div class="modal-body pd-0">
+                <div class="row no-gutters">
+                    <div class="col-lg-12 bg-white">
+                        <div class="pd-y-30 pd-xl-x-30">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="pd-x-30 pd-y-10">
+                                <h3 class="tx-gray-800 tx-normal mg-b-5">Event</h3>
+                                <p>Username: <span id="username"></span></p>
+                                <p>Event: <span id="event"></span></p>
+                                <p>Description: <span id="description"></span></p>
+                                <p>Status: <span id="status"></span></p>
+                                <br>
+                            </div>
+                        </div><!-- pd-20 -->
+                    </div><!-- col-6 -->
+                </div><!-- row -->
+            </div><!-- modal-body -->
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+
+<div id="showPrize" class="modal fade">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content bd-0 bg-transparent rounded overflow-hidden">
+            <div class="modal-body pd-0">
+                <div class="row no-gutters">
+                    <div class="col-lg-12 bg-white">
+                        <div class="pd-y-30 pd-xl-x-30">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="pd-x-30 pd-y-10">
+                                <h3 class="tx-gray-800 tx-normal mg-b-5">Prize</h3>
+                                <p>Name: <span id="prizeName"></span></p>
+                                <p>Content: <span id="content"></span></p>
+                                <p>Amount: <span id="amount"></span></p>
+                                <br>
+                            </div>
+                        </div><!-- pd-20 -->
+                    </div><!-- col-6 -->
+                </div><!-- row -->
+            </div><!-- modal-body -->
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->

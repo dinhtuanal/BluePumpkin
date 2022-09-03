@@ -83,5 +83,11 @@ namespace Admin.Controllers
             var prizes = await _prizeClient.GetByEventId(evtId);
             return Json(new {result = prizes});
         }
+
+        public async Task<JsonResult> GetId(string id)
+        {
+            var prize = await _prizeClient.GetById(id);
+            return Json(new { result = prize });
+        }
     }
 }

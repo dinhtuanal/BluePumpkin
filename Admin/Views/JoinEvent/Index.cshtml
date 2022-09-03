@@ -17,7 +17,12 @@
 }
 <div class="section-wrapper">
     <label class="section-title">Join Event</label>
-    <p class="mg-b-20 mg-sm-b-40">List user in events</p>
+    <p class="mg-b-20 mg-sm-b-20">List user in events</p>
+    <div>
+        <a asp-controller="joinevent" asp-action="add" class="btn btn-teal mg-b-10  pd-x-10">Add</a>
+        <a asp-controller="joinevent" asp-action="add" class="btn btn-warning mg-b-10 pd-x-10">Active</a>
+        <a asp-controller="joinevent" asp-action="add" class="btn btn-info mg-b-10 pd-x-10">List Winner</a>
+    </div>
 
     <div class="table-wrapper">
         <table id="datatable2" class="table display responsive nowrap">

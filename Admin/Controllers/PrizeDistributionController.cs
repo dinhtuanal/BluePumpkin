@@ -15,9 +15,10 @@ namespace Admin.Controllers
             _prizeDistributionClient = prizeDistributionClient;
         }   
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var pd = await _prizeDistributionClient.GetAll();
+            return View(pd);
         }
         [HttpPost]
         public async Task<JsonResult> Add([FromBody]PrizeDistributionViewModel model)

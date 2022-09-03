@@ -68,5 +68,13 @@ namespace Admin.Controllers
             }
             return View(model);
         }
+        public async Task<JsonResult> Delete(string id)
+        {
+            string token = User.GetSpecificClaim("token");
+            var result = await _questionClient.Delete(id, token);
+            return Json(new { result = result });
+        }
+
+
     }
 }

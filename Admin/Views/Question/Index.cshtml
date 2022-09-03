@@ -31,7 +31,7 @@
                         <td>@item.Answer</td>
                         <th>
                             <a href="@Url.Action("update", "question", new{id= @item.QuestionId})" >Edit</a>  |
-                            <a asp-action="Delete" asp-controller="Question">Delete</a>
+                            <a href="#" data-id="@item.QuestionId" class="deleteQuestion">Delete</a>
                         </th>
                     </tr>
                 }
@@ -44,4 +44,5 @@
     <script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
     <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="~/js/load_table.js"></script>
+    <script src="~/js/question.js"></script>
 }

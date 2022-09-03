@@ -48,5 +48,10 @@ namespace Admin.Controllers
             }
             return View(model);
         }
+        public async Task<JsonResult> GetId(string id)
+        {
+            var result = _joinEventClient.GetById(id);
+            return Json(new {result = result});
+        }
     }
 }
