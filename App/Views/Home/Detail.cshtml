@@ -4,12 +4,14 @@
 }
 
 <div>
-    <div class="row">
-        <div class="col-9">
-            <div class="box-event-detail">
-                <h2>@Model.BluePumpkinEvent.Title.ToUpper()</h2><br />
-                <h6>Start date: @Model.BluePumpkinEvent.TimeStart</h6>
-                <h6>End date: @Model.BluePumpkinEvent.TimeEnd</h6>
+    <div class="event-detail-container">
+        <div class="event-detail">
+            <div class="event-detail-contain">
+                <h2 class="event-detail-title">@Model.BluePumpkinEvent.Title.ToUpper()</h2>
+               <div class="event-detail-time">
+                    <h6>Start date: @Model.BluePumpkinEvent.TimeStart</h6>
+                    <h6>End date: @Model.BluePumpkinEvent.TimeEnd</h6>
+               </div>
                 @if (Model.BluePumpkinEvent.ImgUrl != null)
                 {
                     <img src="@Model.BluePumpkinEvent.ImgUrl" class="img-fluid" alt="Responsive image">
@@ -17,25 +19,26 @@
                 else
                 {
                     <img src="https://wallpapercave.com/wp/wp2349409.jpg" class="img-fluid" alt="Responsive image">
-
-                    <br />
                 }
-                <p>@Model.BluePumpkinEvent.Content</p>
+                <p class="event-deatail-sub">@Model.BluePumpkinEvent.Content</p>
             </div>
         </div>
-        <div class="col-3">
-            <div class="box-event-joined">
-                <h5>Joined</h5>
-                @{
-                    foreach (var joinEvent in Model.Joinevents)
-                    {
-                        if (@joinEvent.EventId == @Model.BluePumpkinEvent.EventId)
+        <div class="event-detail-user">
+            <div class="event-user-joined">
+                <h5 class="event-user-joined-title">Joined</h5>
+                <div class="event-user-joined-list">
+                    @{
+                        foreach (var joinEvent in Model.Joinevents)
                         {
-                            <h6>@joinEvent.UserName</h6>
-                        }
+                            if (@joinEvent.EventId == @Model.BluePumpkinEvent.EventId)
+                            {
+                                <h6>@joinEvent.UserName</h6>
+                            }
 
+                        }
                     }
-                }
+                    <h6>UserName</h6>
+                </div>
             </div>
         </div>
     </div>

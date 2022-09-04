@@ -52,72 +52,102 @@
 
 <div class="container-events">
     <div class="event-list">
-        <h5>Events</h5>
+        <h5 class="even-list-title">Events</h5>
         <div class="content">
-            @{
-                foreach (var item in Model.events)
+            @foreach (var item in Model.events)
+            {
+                if (item.EventStatus == "0")
                 {
-                    if (item.EventStatus == "0")
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    <div class="even">
-
-                        <div class="event-content">
-                            <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
-                            <div class="even-desc">
-                                <h6 style="margin:0;padding:0">
-                                    Status -
-                                    @{
-                                        switch (item.EventStatus)
-                                        {
-                                            case "1":
-                                                <text> Finished </text>
-                                                break;
-                                            case "2":
-                                                <text> Happening </text>
-                                                break;
-                                            case "3":
-                                                <text> Upcomming </text>
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }
-                                </h6>
-                                <a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                    Event Name: @item.EventName
-                                </a><br />
-                                @item.Content
-                            </div>
-                        </div>
-
-                        @if (item.EventStatus == "3" && User.Identity.Name == null)
-                        {
-                            <a class="event-action" asp-action="login" asp-controller="auth">Login to join the event</a>
+                <div class="even">
+                    <div class="even-status">
+                        @{
+                            switch (item.EventStatus)
+                            {
+                                case "1":
+                                    <span class="status-finished"> Finished </span>
+                                    break;
+                                case "2":
+                                    <span class="status-happening"> Happening </span>
+                                    break;
+                                case "3":
+                                    <span class="status-upcoming"> Upcomming </span>
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-                        @if (item.EventStatus == "3" && User.Identity.Name != null)
+                    </div>
+
+                    <div class="event-content">
+                        <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                        <div class="even-desc">
+                            <a class="even-name" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                @item.EventName
+                            </a>
+                            <p class="event-desc">
+                                @item.Content
+                            </p>
+                        </div>
+                    </div>
+
+                    @if (item.EventStatus == "3" && User.Identity.Name == null)
+                    {
+                        <a class="event-action" asp-action="login" asp-controller="auth">Login to join</a>
+                    }
+                    @if (item.EventStatus == "3" && User.Identity.Name != null)
+                    {
+                        if (Model.joinEvents == null || Model.joinEvents.Count == 0)
                         {
                             <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
                         }
 
-                    </div>
+                        @foreach (var joinEvent in Model.joinEvents)
+                        {
+                            if (joinEvent.EventId == item.EventId)
+                            {
+                                <button data-id="@item.EventId" id="joinevent" class="event-action">Da tham gia</button>
+                            }
+                            else
+                            {
+                                <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
+                            }
+                        }
 
-                }
+                    }
+
+                </div>
+
             }
         </div>
     </div>
 
     <div class="nav">
-        <p>Recent winners</p>
-        <ol class="list_win_person">
-            <li class="win_person_item">Nguyen Van A</li>
-            <li class="win_person_item">Nguyen Van A</li>
-            <li class="win_person_item">Nguyen Van A</li>
-            <li class="win_person_item">Nguyen Van A</li>
-            <li class="win_person_item">Nguyen Van A</li>
-        </ol>
+        <p class="nav-title">Recent winners</p>
+        <div class="list_win_person">
+            <div class="win_person_item">
+                <p class="win_person_name">Nguyen Van A</p>
+                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+            <div class="win_person_item">
+                <p class="win_person_name">Nguyen Van A</p>
+                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+            <div class="win_person_item">
+                <p class="win_person_name">Nguyen Van A</p>
+                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+            <div class="win_person_item">
+                <p class="win_person_name">Nguyen Van A</p>
+                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+            <div class="win_person_item">
+                <p class="win_person_name">Nguyen Van A</p>
+                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+        </div>
     </div>
 
 </div>
