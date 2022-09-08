@@ -1,4 +1,5 @@
-﻿using App.Models;
+﻿using App.Helpers;
+using App.Models;
 using App.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
@@ -33,14 +34,27 @@ namespace App.Controllers
         {
             var token = User.GetSpecificClaim("token");
             var userLogin = await _user.GetByUserName(User.Identity.Name, token);
+
             if (userLogin != null)
             {
                 ViewBag.UserId = userLogin.Id;
             }
+
             var events = await _event.getEvents();
             var joinEvents = await _event.getJoinEvents();
 
             dynamic myModel = new ExpandoObject();
+
+            events.ForEach(item =>
+            {
+                var joinEvent = joinEvents.Find(x => x.EventId.Equals(item.EventId) && x.UserId.Equals(userLogin?.Id));
+
+                if (joinEvent != null)
+                {
+                    item.jointEventStatus = Helper.convertJoinEventStatus(joinEvent.JoinEventStatus);
+                }
+
+            });
 
             myModel.joinEvents = joinEvents;
             myModel.events = events;
@@ -48,7 +62,7 @@ namespace App.Controllers
             return View(myModel);
         }
         [HttpPost]
-        public async Task<JsonResult> JoinEvent([FromBody]JoinEventViewModel model)
+        public async Task<JsonResult> JoinEvent([FromBody] JoinEventViewModel model)
         {
             var token = User.GetSpecificClaim("token");
             var result = await _jointEvent.Add(model, token);
@@ -63,7 +77,11 @@ namespace App.Controllers
             myModel.BluePumpkinEvent = BluePumpkinEvent;
 
             var joinevents = await _event.getJoinEvents();
-            myModel.Joinevents = joinevents;
+            var filterJoinevents = joinevents.FindAll(x => x.EventId.Equals(id) && x.JoinEventStatus != "2" && x.JoinEventStatus != "0");
+
+            filterJoinevents.ForEach(x => x.JoinEventStatus = Helper.convertJoinEventStatus(x.JoinEventStatus));
+
+            myModel.Joinevents = filterJoinevents;
 
             return View(myModel);
         }
