@@ -77,7 +77,7 @@ namespace App.Controllers
             myModel.BluePumpkinEvent = BluePumpkinEvent;
 
             var joinevents = await _event.getJoinEvents();
-            var filterJoinevents = joinevents.FindAll(x => x.EventId.Equals(id));
+            var filterJoinevents = joinevents.FindAll(x => x.EventId.Equals(id) && x.JoinEventStatus != "2" && x.JoinEventStatus != "0");
 
             filterJoinevents.ForEach(x => x.JoinEventStatus = Helper.convertJoinEventStatus(x.JoinEventStatus));
 

@@ -17,24 +17,83 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <a href="#myCarousel">
-                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                    </a>
+                @{
+                    var index = 0;
+
+                    foreach (var item in Model.events)
+                    {
+                        if (item.EventStatus != "3" || index == 3) continue;
+
+                        if (item.ImgUrl == null)
+                        {
+                            if (index == 0)
+                            {
+                                <div class="item active">
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                                    </a>
+                                </div>
+
+
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                                    </a>
+                                </div>
+                            }
+                            continue;
+
+                        }
+
+                        if (item.ImgUrl != null)
+                        {
+                            var imgUrl = "https://localhost:44366" + item.ImgUrl;
+
+                            if (index == 0)
+                            {
+                                <div class="item active">
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                        <img src="@imgUrl" alt="Los Angeles" style="width:100%;">
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                        <img src="@imgUrl" alt="Los Angeles" style="width:100%;">
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                        index++;
+
+                    }
+                }
+
+
+                @*<div class="item active">
+                <a href="#myCarousel">
+                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                </a>
 
                 </div>
 
                 <div class="item">
-                    <a href="#myCarousel">
-                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                    </a>
+                <a href="#myCarousel">
+                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                </a>
                 </div>
 
                 <div class="item">
-                    <a href="#myCarousel">
-                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                    </a>
-                </div>
+                <a href="#myCarousel">
+                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                </a>
+                </div>*@
             </div>
 
             <!-- Left and right controls -->
