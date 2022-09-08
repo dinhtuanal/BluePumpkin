@@ -99,23 +99,14 @@
                     }
                     @if (item.EventStatus == "3" && User.Identity.Name != null)
                     {
-                        if (Model.joinEvents == null || Model.joinEvents.Count == 0)
+                        if (item.jointEventStatus != null)
                         {
-                            <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
+                            <button class="event-action" style="cursor:default;background-color:#78aa9a ; color: #fffff9">@item.jointEventStatus</button>
                         }
-
-                        @foreach (var joinEvent in Model.joinEvents)
+                        else
                         {
-                            if (joinEvent.EventId == item.EventId)
-                            {
-                                <button data-id="@item.EventId" id="joinevent" class="event-action">Da tham gia</button>
-                            }
-                            else
-                            {
-                                <button data-id="@item.EventId" id="joinevent" class="event-action">Tham gia</button>
-                            }
+                            <button data-id="@item.EventId" id="joinevent" class="event-action">Join</button>
                         }
-
                     }
 
                 </div>
@@ -149,12 +140,44 @@
             </div>
         </div>
     </div>
+    <p id="userLoginId" hidden="hidden">@ViewBag.UserId</p>
+    <p id="createdBy" hidden="hidden">@User.Identity.Name</p>
 
 </div>
 @section Scripts{
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $('body').off('click', '#joinevent').on('click', '#joinevent', JoinEvent)
+            function JoinEvent() {
+                var model = new Object();
+                model.joinEventStatus = 0;
+                model.eventId = $(this).data('id');
+                model.description = "";
+                model.userId = $('#userLoginId').text();
+                model.createdBy = $('#createdBy').text();
+                console.log(model);
+                $.ajax({
+                    type: 'post',
+                    url: '/Home/JoinEvent/add',
+                    dataType: 'json',
+                    data: JSON.stringify(model),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = response.result;
+                        console.log(data);
+                        if (data.statusCode == 200) {
+                            alert("Add success");
+                        } else {
+                            alert("Add faild")
+                        }
+                    },
+                    error: function (err) {
+                        alert("Error");
+                    }
+                })
+            }
+        })
     </script>
 }
 

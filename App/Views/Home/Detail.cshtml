@@ -1,6 +1,7 @@
 ﻿@model dynamic
 @{
     ViewData["Title"] = "Event detail";
+    var ImgUrl = "https://localhost:44366/" + @Model.BluePumpkinEvent.ImgUrl;
 }
 
 <div>
@@ -14,7 +15,7 @@
                </div>
                 @if (Model.BluePumpkinEvent.ImgUrl != null)
                 {
-                    <img src="@Model.BluePumpkinEvent.ImgUrl" class="img-fluid" alt="Responsive image">
+                    <img src="@ImgUrl" class="img-fluid" alt="Responsive image">
                 }
                 else
                 {
@@ -32,12 +33,10 @@
                         {
                             if (@joinEvent.EventId == @Model.BluePumpkinEvent.EventId)
                             {
-                                <h6>@joinEvent.UserName</h6>
+                                <h6>@joinEvent.UserName - @joinEvent.JoinEventStatus</h6>
                             }
-
                         }
                     }
-                    <h6>UserName</h6>
                 </div>
             </div>
         </div>
