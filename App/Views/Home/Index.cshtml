@@ -20,80 +20,87 @@
                 @{
                     var index = 0;
 
-                    foreach (var item in Model.events)
+                    if (Model.events == null)
                     {
-                        if (item.EventStatus != "3" || index == 3) continue;
+                        <div class="item active">
+                            <a>
+                                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                            </a>
+                        </div>
 
-                        if (item.ImgUrl == null)
-                        {
-                            if (index == 0)
-                            {
-                                <div class="item active">
-                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                                    </a>
-                                </div>
+                        <div class="item">
+                            <a>
+                                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                            </a>
+                        </div>
 
-
-                            }
-                            else
-                            {
-                                <div class="item">
-                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                        <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                                    </a>
-                                </div>
-                            }
-                            continue;
-
-                        }
-
-                        if (item.ImgUrl != null)
-                        {
-                            var imgUrl = "https://localhost:44366" + item.ImgUrl;
-
-                            if (index == 0)
-                            {
-                                <div class="item active">
-                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                        <img src="@imgUrl" alt="Los Angeles" style="width:100%;">
-                                    </a>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="item">
-                                    <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                        <img src="@imgUrl" alt="Los Angeles" style="width:100%;">
-                                    </a>
-                                </div>
-                            }
-                        }
-
-                        index++;
-
+                        <div class="item">
+                            <a>
+                                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
+                            </a>
+                        </div>
                     }
+                    else
+                    {
+
+                        foreach (var item in Model.events)
+                        {
+                            if (item.EventStatus != "Upcomming" || index == 3) continue;
+
+                            if (item.ImgUrl == null)
+                            {
+                                if (index == 0)
+                                {
+                                    <div class="item active">
+                                        <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                            <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;height:600px">
+                                        </a>
+                                    </div>
+
+
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                            <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;height:600px">
+                                        </a>
+                                    </div>
+                                }
+                                continue;
+
+                            }
+
+                            if (item.ImgUrl != null)
+                            {
+                                var imgUrl = "https://localhost:44366" + item.ImgUrl;
+
+                                if (index == 0)
+                                {
+                                    <div class="item active">
+                                        <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                            <img src="@imgUrl" alt="Los Angeles" style="width:100%;height:600px">
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <a asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                            <img src="@imgUrl" alt="Los Angeles" style="width:100%;height:600px">
+                                        </a>
+                                    </div>
+                                }
+                            }
+
+                            index++;
+
+                        }
+                    }
+
+
                 }
 
-
-                @*<div class="item active">
-                <a href="#myCarousel">
-                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                </a>
-
-                </div>
-
-                <div class="item">
-                <a href="#myCarousel">
-                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                </a>
-                </div>
-
-                <div class="item">
-                <a href="#myCarousel">
-                <img src="https://znews-photo.zingcdn.me/w860/Uploaded/nugzrd/2022_08_28/DJI_0313.jpg" alt="Los Angeles" style="width:100%;">
-                </a>
-                </div>*@
             </div>
 
             <!-- Left and right controls -->
@@ -113,64 +120,95 @@
     <div class="event-list">
         <h5 class="even-list-title">Events</h5>
         <div class="content">
-            @foreach (var item in Model.events)
-            {
-                if (item.EventStatus == "0")
+            @{
+                if (Model.events == null)
                 {
-                    continue;
-                }
-
-                <div class="even">
-                    <div class="even-status">
-                        @{
-                            switch (item.EventStatus)
-                            {
-                                case "1":
-                                    <span class="status-finished"> Finished </span>
-                                    break;
-                                case "2":
-                                    <span class="status-happening"> Happening </span>
-                                    break;
-                                case "3":
-                                    <span class="status-upcoming"> Upcomming </span>
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    </div>
-
                     <div class="event-content">
                         <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
                         <div class="even-desc">
-                            <a class="even-name" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
-                                @item.EventName
+                            <a class="even-name">
+                                Demo data - event 1
                             </a>
                             <p class="event-desc">
-                                @item.Content
+                                Demo data - content of event
                             </p>
                         </div>
                     </div>
+                    <div class="event-content">
+                        <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                        <div class="even-desc">
+                            <a class="even-name">
+                                Demo data - event 2
+                            </a>
+                            <p class="event-desc">
+                                Demo data - content of event
+                            </p>
+                        </div>
+                    </div>
+                }
+                else
+                {
 
-                    @if (item.EventStatus == "3" && User.Identity.Name == null)
+                    foreach (var item in Model.events)
                     {
-                        <a class="event-action" asp-action="login" asp-controller="auth">Login to join</a>
-                    }
-                    @if (item.EventStatus == "3" && User.Identity.Name != null)
-                    {
-                        if (item.jointEventStatus != null)
+                        if (item.EventStatus == "0")
                         {
-                            <button class="event-action" style="cursor:default;background-color:#78aa9a ; color: #fffff9">@item.jointEventStatus</button>
+                            continue;
                         }
-                        else
-                        {
-                            <button data-id="@item.EventId" id="joinevent" class="event-action">Join</button>
-                        }
+
+                        <div class="even">
+                            <div class="even-status">
+                                <span class="status-finished"> @item.EventStatus </span>
+                            </div>
+
+                            <div class="event-content">
+
+                                @{
+                                    if (item.ImgUrl == null)
+                                    {
+                                        <img class="even-image" src="https://img.freepik.com/free-vector/cute-woman-teacher-government-uniform-welcoming-posture-character-cartoon-art-illustration_56104-835.jpg?w=1060&t=st=1660056741~exp=1660057341~hmac=67b2070d2eecca56b626ab74b0fae314e6c4456a28bd7a8071c1d0ad2b0e661f" alt="even_image" />
+                                    }
+
+                                    if (item.ImgUrl != null)
+                                    {
+                                        var imgUrl = "https://localhost:44366" + item.ImgUrl;
+                                        <img class="even-image" src="@imgUrl" alt="even_image" />
+                                    }
+                                }
+
+                                <div class="even-desc">
+                                    <a class="even-name" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id=@item.EventId>
+                                        @item.EventName
+                                    </a>
+                                    <p class="event-desc">
+                                        @item.Content
+                                    </p>
+                                </div>
+                            </div>
+
+                            @if (item.EventStatus == "Upcomming" && User.Identity.Name == null)
+                            {
+                                <a class="event-action" asp-action="login" asp-controller="auth">Login to join</a>
+                            }
+                            @if (item.EventStatus == "Upcomming" && User.Identity.Name != null)
+                            {
+                                if (item.jointEventStatus != null)
+                                {
+                                    <button class="event-action" style="cursor:default;background-color:#78aa9a ; color: #fffff9">@item.jointEventStatus</button>
+                                }
+                                else
+                                {
+                                    <button data-id="@item.EventId" id="joinevent" class="event-action">Join</button>
+                                }
+                            }
+
+                        </div>
+
                     }
-
-                </div>
-
+                }
             }
+
+
         </div>
     </div>
 
