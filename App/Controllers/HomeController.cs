@@ -45,8 +45,13 @@ namespace App.Controllers
 
             dynamic myModel = new ExpandoObject();
 
-            events.ForEach(item =>
+            events?.ForEach(item =>
             {
+                if (item.EventStatus != "0")
+                {
+                    item.EventStatus = Helper.convertEventStatus(item.EventStatus);
+                }
+
                 var joinEvent = joinEvents.Find(x => x.EventId.Equals(item.EventId) && x.UserId.Equals(userLogin?.Id));
 
                 if (joinEvent != null)
