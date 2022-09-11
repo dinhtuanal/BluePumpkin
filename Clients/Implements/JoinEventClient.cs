@@ -48,7 +48,7 @@ namespace Clients.Implements
         {
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync("api/joinevents", content);
+            var response = await httpClient.PutAsync("api/joinevents/update", content);
             var apiResponse = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ResponseResult>(apiResponse);
         }

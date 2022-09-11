@@ -22,7 +22,15 @@ namespace Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var joinevts = await _joinEventClient.GetAll();
-            return View(joinevts);
+            var myList = new List<VJoinEvent>();
+            foreach (var j in joinevts)
+            {
+                if (j.JoinEventStatus == JoinEventStatus.Accepted)
+                {
+                    myList.Add(j);
+                }
+            }
+            return View(myList);
         }
         public async Task<IActionResult> Active()
         {
@@ -37,6 +45,14 @@ namespace Admin.Controllers
             }
             return View(myList);
         }
+        [HttpPost]
+        public async Task<JsonResult> Update([FromBody] JoinEventViewModel model)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _joinEventClient.Update(model, token);
+            return Json(new { result = result });
+        }
+
         public async Task<IActionResult> Winner()
         {
             var joinevts = await _joinEventClient.GetAll();

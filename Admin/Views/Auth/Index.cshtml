@@ -38,7 +38,8 @@
                         <td>@item.Email</td>
                         <td>@item.PhoneNumber</td>
                         <th>
-                            <a href="@Url.Action("update", "auth", new{id= @item.Id})">Edit</a>
+                            <a href="@Url.Action("update", "auth", new{id= @item.Id})">Edit</a>  |  
+                            <a href="#" id="delete" data-id="@item.Id">Delete</a>
                         </th>
                     </tr>
                 }
@@ -51,4 +52,60 @@
     <script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
     <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="~/js/load_table.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('body').off('click','#delete').on('click','#delete',Delete);
+            function Delete(){
+                var id = $(this).data('id');
+                bootbox.confirm({
+            message: "You want to remove user",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result == true) {
+                    $.ajax({
+                        type: 'post',
+                        url: '/auth/Delete',
+                        dataType: 'json',
+                        data: { id: id },
+                        success: function (response) {
+                            var data = response.result;
+                            console.log(data)
+                            if (data.statusCode == 200) {
+                                bootbox.alert({
+                                    message: "Remove user success",
+                                    callback: function () {
+                                        window.location.reload()
+                                    }
+                                })
+                            } else if (data.statusCode == 401) {
+                                bootbox.alert({
+                                    message: "You don't have permission to remove",
+                                    size: 'large'
+                                })
+                            } else {
+                                bootbox.alert({
+                                    message: "Error! Can not remove!",
+                                    size: 'large'
+                                })
+                            }
+                        },
+                        error: function (response) {
+                            bootbox.alert("Error: " + response)
+                        }
+                    });
+                }
+            }
+        });
+            }
+        })
+    </script>
 }
