@@ -146,5 +146,12 @@ namespace Admin.Controllers
             var userLogin = await _userClient.GetByUserName(username, token);
             return View(userLogin);
         }
+        [HttpPost]
+        public async Task<JsonResult> Delete(string id)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _userClient.Delete(id, token);
+            return Json(new { result = result });
+        }
     }
 }

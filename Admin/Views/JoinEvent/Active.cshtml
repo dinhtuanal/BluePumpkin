@@ -6,6 +6,53 @@
 <script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
 <script src="~/js/load_table.js"></script>
 <script src="~/js/delete_joinevent.js"></script>
+<script>
+    $(document).ready(function(){
+        $('body').off('click','#active').on('click', '#active', Active);
+        function Active(){
+            var model = new Object();
+            var id = $(this).data('id');
+            model.joinEventId = $('#id-' + id ).text();
+            model.joinEventStatus = 3;
+            model.eventId = $('#event-id-' + id ).text();
+            model.userId = $('#user-id-' + id ).text();
+            model.description = $('#desc-' + id ).text();
+            model.createdBy = $('#created-by-' + id ).text();
+            console.log(model)
+            $.ajax({
+                type: 'post',
+                url: '/joinevent/Update',
+                dataType: 'json',
+                data: JSON.stringify(model),
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    var data = response.result;
+                    if (data.statusCode == 200) {
+                        bootbox.alert({
+                            message: "Active success",
+                            callback: function () {
+                                window.location.reload()
+                            }
+                        })
+                    } else if (data.statusCode == 401) {
+                        bootbox.alert({
+                            message: "You don't have permission to active",
+                            size: 'large'
+                        })
+                    } else {
+                        bootbox.alert({
+                            message: "Error! Can not active!",
+                            size: 'large'
+                        })
+                    }
+                },
+                error: function (result) {
+                    console.log("Lỗi");
+                }
+            });
+        }
+    })
+</script>
 }
 @section SlimPageHeader{
 <div class="slim-pageheader">
@@ -49,7 +96,12 @@
                             <td>@item.CreatedBy</td>
                             <td>@item.JoinEventStatus</td>
                             <th>
-                                <a href="" id="active" >Active</a>
+                                <p id="id-@item.JoinEventId" hidden="hidden">@item.JoinEventId</p>
+                                <p id="event-id-@item.JoinEventId" hidden="hidden">@item.EventId</p>
+                                <p id="user-id-@item.JoinEventId" hidden="hidden">@item.UserId</p>
+                                <p id="desc-@item.JoinEventId" hidden="hidden">@item.Description</p>
+                                <p id="created-by-@item.JoinEventId" hidden="hidden">@item.Description</p>
+                                <a data-id="@item.JoinEventId" id="active">Active</a>
                             </th>
                         </tr>
                     }
