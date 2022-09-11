@@ -1,13 +1,13 @@
 ﻿@model SharedObjects.ValueObjects.VEvent
 @section SlimPageHeader{
-    <div class="slim-pageheader">
-        <ol class="breadcrumb slim-breadcrumb">
-            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
-            <li class="breadcrumb-item"><a asp-action="index" asp-controller="event">Event</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Delete</li>
-        </ol>
-        <h6 class="slim-pagetitle">Event</h6>
-    </div><!-- slim-pageheader -->
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="event">Event</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Delete</li>
+    </ol>
+    <h6 class="slim-pagetitle">Event</h6>
+</div><!-- slim-pageheader -->
 }
 <div class="section-wrapper">
     <label class="section-title">Event</label>
@@ -42,12 +42,42 @@
             </p>
         </div><!-- col -->
         <div class="col-lg-12 text-center">
-            <form asp-action="Delete" asp-controller="Event">
-                <input hidden="hidden" asp-for="EventId" />
-                <input type="submit" value="delete" class="btn btn-danger" />
-                <a asp-action="Index" asp-controller="Event" class="btn btn-primary">Back to list</a>
-            </form>
+            <a id="delete" data-id="@Model.EventId" class="btn btn-danger text-white">Delete</a>
+            <a asp-action="Index" asp-controller="Event" class="btn btn-primary">Back to list</a>
         </div>
     </div>
-
 </div>
+@section Scripts{
+<script>
+    $(document).ready(function(){
+        $('body').off('click','#delete').on('click','#delete',ConfirmDelete);
+        function ConfirmDelete(){
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'post',
+                url: '/Event/ConfirmDelete',
+                dataType: 'json',
+                data: { id: id },
+                success: function(response){
+                    var data = response.result;
+                    if(data.statusCode == 200){
+                         bootbox.alert({
+                            message: "Delete event success",
+                            callback: function () {
+                                window.location.href = "/event/index"
+                            }
+                        })
+                    }else{
+                        bootbox.alert({
+                            message: "Delete faild"
+                        })
+                    }
+                },
+                error: function(err){
+                    console.log("error: " + err);
+                }
+            })
+        }
+    })
+</script>
+}

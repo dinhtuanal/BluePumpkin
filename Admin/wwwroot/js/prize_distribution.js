@@ -46,9 +46,8 @@
             success: function (response) {
                 var result = response.result;
                 if (result.statusCode == 200) {
-                    alert("Add success", function () {
-                        window.location.href = "/prizedistribution/index";
-                    })
+                    alert("Add success");
+                    window.location.reload();
                 }
             },
             error: function (result) {

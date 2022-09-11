@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
+using SharedObjects.ValueObjects;
 using SharedObjects.ViewModels;
 
 namespace Admin.Controllers
@@ -22,6 +23,32 @@ namespace Admin.Controllers
         {
             var joinevts = await _joinEventClient.GetAll();
             return View(joinevts);
+        }
+        public async Task<IActionResult> Active()
+        {
+            var joinevts = await _joinEventClient.GetAll();
+            var myList = new List<VJoinEvent>();
+            foreach(var j in joinevts)
+            {
+                if(j.JoinEventStatus == JoinEventStatus.Peding)
+                {
+                    myList.Add(j);
+                }
+            }
+            return View(myList);
+        }
+        public async Task<IActionResult> Winner()
+        {
+            var joinevts = await _joinEventClient.GetAll();
+            var myList = new List<VJoinEvent>();
+            foreach (var j in joinevts)
+            {
+                if (j.JoinEventStatus == JoinEventStatus.Won)
+                {
+                    myList.Add(j);
+                }
+            }
+            return View(myList);
         }
         public async Task<IActionResult> Add()
         {
@@ -52,6 +79,13 @@ namespace Admin.Controllers
         {
             var result = _joinEventClient.GetById(id);
             return Json(new {result = result});
+        }
+        [HttpPost]
+        public async Task<JsonResult> Delete(string id)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _joinEventClient.Delete(id, token);
+            return Json(new { result = result });
         }
     }
 }

@@ -47,6 +47,13 @@ namespace Admin.Controllers
             }
             return View(evt);
         }
+        [HttpPost]
+        public async Task<JsonResult> ConfirmDelete(string id)
+        {
+            var token = User.GetSpecificClaim("token");
+            var result = await _eventClient.Delete(id,token);
+            return Json(new { result = result });
+        }
         public async Task<IActionResult> Update(string id)
         {
             var evt = await _eventClient.GetById(id);
