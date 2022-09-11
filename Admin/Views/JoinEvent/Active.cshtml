@@ -1,0 +1,60 @@
+﻿@model List<SharedObjects.ValueObjects.VJoinEvent>
+
+@section Scripts{
+<script src="~/js/prize_distribution.js"></script>
+<script src="~/assets/lib/datatables/js/jquery.dataTables.js"></script>
+<script src="~/assets/lib/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="~/js/load_table.js"></script>
+<script src="~/js/delete_joinevent.js"></script>
+}
+@section SlimPageHeader{
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Join Event</li>
+    </ol>
+    <h6 class="slim-pagetitle">Accept user join event</h6>
+</div><!-- slim-pageheader -->
+}
+<div class="section-wrapper">
+    <label class="section-title">Join Event</label>
+    <p class="mg-b-20 mg-sm-b-20">List user in events</p>
+    <div>
+        <a asp-controller="joinevent" asp-action="add" class="btn btn-teal mg-b-10  pd-x-10">Add</a>
+        <a asp-controller="joinevent" asp-action="active" class="btn btn-warning mg-b-10 pd-x-10">Active</a>
+        <a asp-controller="joinevent" asp-action="winner" class="btn btn-info mg-b-10 pd-x-10">List Winner</a>
+    </div>
+
+    <div class="table-wrapper">
+        <table id="datatable2" class="table display responsive nowrap">
+            <thead>
+                <tr>
+                    <th class="wd-25p">Event Name</th>
+                    <th class="wd-10p">Username</th>
+                    <th class="wd-15p">Description</th>
+                    <th class="wd-15p">Created by</th>
+                    <th class="wd-15p">Status</th>
+                    <th class="wd-25p">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.JoinEventStatus == SharedObjects.Commons.JoinEventStatus.Peding)
+                    {
+                        <tr>
+                            <td>@item.EventName</td>
+                            <td>@item.UserName</td>
+                            <td>@item.Description</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@item.JoinEventStatus</td>
+                            <th>
+                                <a href="" id="active" >Active</a>
+                            </th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div><!-- table-wrapper -->
+</div>
