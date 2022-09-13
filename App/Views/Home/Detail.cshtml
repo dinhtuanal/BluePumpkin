@@ -9,10 +9,10 @@
         <div class="event-detail">
             <div class="event-detail-contain">
                 <h2 class="event-detail-title">@Model.BluePumpkinEvent.Title.ToUpper()</h2>
-               <div class="event-detail-time">
+                <div class="event-detail-time">
                     <h6>Start date: @Model.BluePumpkinEvent.TimeStart</h6>
                     <h6>End date: @Model.BluePumpkinEvent.TimeEnd</h6>
-               </div>
+                </div>
                 @if (Model.BluePumpkinEvent.ImgUrl != null)
                 {
                     <img src="@ImgUrl" class="img-fluid" alt="Responsive image">
@@ -23,10 +23,34 @@
                 }
                 <p class="event-deatail-sub">@Model.BluePumpkinEvent.Content</p>
             </div>
+            <br/>
+            <div class="nav">
+                <p class="nav-title">Prize</p>
+                <div class="list_win_person">
+                    @foreach (var prize in Model.Prizes)
+                    {
+                        <div class="win_person_item">
+                            <p class="win_person_name">@prize.PrizeName</p>
+                            <span class="win_person_even_name">Amount: @prize.Amount </span>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
         </div>
         <div class="event-detail-user">
             <div class="event-user-joined">
-                <h5 class="event-user-joined-title">Joined</h5>
+                @if (Model.BluePumpkinEvent.EventStatus == "Finished")
+                {
+                    <h5 class="event-user-joined-title">Won</h5>
+                }
+
+                @if (Model.BluePumpkinEvent.EventStatus == "Upcomming" || Model.BluePumpkinEvent.EventStatus == "Happening")
+                {
+                    <h5 class="event-user-joined-title">Joined</h5>
+                }
+
                 <div class="event-user-joined-list">
                     @{
                         foreach (var joinEvent in Model.Joinevents)
@@ -39,6 +63,11 @@
                     }
                 </div>
             </div>
+
+            
         </div>
+
+       
+
     </div>
 </div>

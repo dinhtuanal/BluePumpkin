@@ -16,24 +16,28 @@ namespace App.Controllers
         private readonly IEvent _event;
         private readonly IJointEvent _jointEvent;
         private readonly IUser _user;
+        private readonly IPrize _prize;
 
         public HomeController(
             ILogger<HomeController> logger,
             IEvent eventBluePumpkin,
             IJointEvent jointEvent,
-            IUser user
+            IUser user,
+            IPrize prize
             )
         {
             _logger = logger;
             _event = eventBluePumpkin;
             _jointEvent = jointEvent;
             _user = user;
+            _prize = prize;
         }
 
         public async Task<IActionResult> Index()
         {
             var token = User.GetSpecificClaim("token");
             var userLogin = await _user.GetByUserName(User.Identity.Name, token);
+            
 
             if (userLogin != null)
             {
@@ -81,14 +85,19 @@ namespace App.Controllers
             dynamic myModel = new ExpandoObject();
 
             var BluePumpkinEvent = await _event.getEvent(id);
+            BluePumpkinEvent.EventStatus = Helper.convertEventStatus(BluePumpkinEvent.EventStatus);
+            var prizes = await _prize.getPrizes();
+
             myModel.BluePumpkinEvent = BluePumpkinEvent;
 
             var joinevents = await _event.getJoinEvents();
             var filterJoinevents = joinevents.FindAll(x => x.EventId.Equals(id) && x.JoinEventStatus != "2" && x.JoinEventStatus != "0");
+            var filterPrizes = prizes.FindAll(x => x.EventId.Equals(BluePumpkinEvent.EventId));
 
             filterJoinevents.ForEach(x => x.JoinEventStatus = Helper.convertJoinEventStatus(x.JoinEventStatus));
 
             myModel.Joinevents = filterJoinevents;
+            myModel.Prizes = prizes;
 
             return View(myModel);
         }
