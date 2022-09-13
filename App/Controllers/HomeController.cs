@@ -61,6 +61,8 @@ namespace App.Controllers
 
             });
 
+            joinEvents.ForEach(x => x.JoinEventStatus = Helper.convertJoinEventStatus(x.JoinEventStatus));
+
             myModel.joinEvents = joinEvents;
             myModel.events = events;
 
