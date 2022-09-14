@@ -6,12 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-
 builder.Services.AddTransient< IQuestion,Question>();
 builder.Services.AddTransient<IEvent, Event>();
 builder.Services.AddTransient<IUser, User>();
 builder.Services.AddTransient<IJointEvent, JointEvent>();
+builder.Services.AddTransient<IPrize, Prize>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>

@@ -157,9 +157,27 @@
                         }
 
                         <div class="even">
-                            <div class="even-status">
-                                <span class="status-finished"> @item.EventStatus </span>
-                            </div>
+                            @if (item.EventStatus == "Finished")
+                            {
+                                <div class="even-status">
+                                    <span class="status-finished"> @item.EventStatus </span>
+                                </div>
+                            }
+
+                            @if (item.EventStatus == "Upcomming")
+                            {
+                                <div class="even-status">
+                                    <span class="status-upcomming"> @item.EventStatus </span>
+                                </div>
+                            }
+
+                            @if (item.EventStatus == "Happening")
+                            {
+                                <div class="even-status">
+                                    <span class="status-happening"> @item.EventStatus </span>
+                                </div>
+                            }
+
 
                             <div class="event-content">
 
@@ -215,26 +233,18 @@
     <div class="nav">
         <p class="nav-title">Recent winners</p>
         <div class="list_win_person">
-            <div class="win_person_item">
-                <p class="win_person_name">Nguyen Van A</p>
-                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-            </div>
-            <div class="win_person_item">
-                <p class="win_person_name">Nguyen Van A</p>
-                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-            </div>
-            <div class="win_person_item">
-                <p class="win_person_name">Nguyen Van A</p>
-                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-            </div>
-            <div class="win_person_item">
-                <p class="win_person_name">Nguyen Van A</p>
-                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-            </div>
-            <div class="win_person_item">
-                <p class="win_person_name">Nguyen Van A</p>
-                <span class="win_person_even_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-            </div>
+            @foreach (var item in Model.joinEvents)
+            {
+                if (item.JoinEventStatus == "Won")
+                {
+                    <div class="win_person_item">
+                        <p class="win_person_name">@item.UserName</p>
+                        <span class="win_person_even_name">Won the event @item.EventName</span>
+                    </div>
+
+                }
+
+            }
         </div>
     </div>
     <p id="userLoginId" hidden="hidden">@ViewBag.UserId</p>
