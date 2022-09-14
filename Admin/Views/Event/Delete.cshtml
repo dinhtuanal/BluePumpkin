@@ -16,7 +16,16 @@
     <div class="row mg-t-20">
 
         <div class="col-lg-6 mg-b-30">
-            <img width="400" src="https://localhost:44366/event/event-default.jpg" />
+            @if(Model.ImgUrl == null)
+            {
+                <img width="400" src="https://localhost:44366/event/event-default.jpg" />
+            }
+            else
+            {
+                var imgUrl = Model.ImgUrl;
+                <img width="400" src="https://localhost:44366/@imgUrl" />
+            }
+            
         </div>
         <div class="col-lg-6">
             <label class="section-label-sm tx-gray-500">Event</label>

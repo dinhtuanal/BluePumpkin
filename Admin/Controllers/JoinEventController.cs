@@ -43,6 +43,7 @@ namespace Admin.Controllers
                     myList.Add(j);
                 }
             }
+            ViewBag.CountActive = myList.Count;
             return View(myList);
         }
         [HttpPost]

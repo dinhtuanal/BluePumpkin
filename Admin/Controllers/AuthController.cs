@@ -135,7 +135,7 @@ namespace Admin.Controllers
             ViewBag.Error = result.Notifications;
             if (result.StatusCode == 200)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(model);
         }

@@ -20,8 +20,13 @@
     <label class="section-title">Join Event</label>
     <p class="mg-b-20 mg-sm-b-20">List user in events</p>
     <div>
-        <a asp-controller="joinevent" asp-action="add" class="btn btn-teal mg-b-10  pd-x-10">Add</a>
-        <a asp-controller="joinevent" asp-action="active" class="btn btn-warning mg-b-10 pd-x-10">Active</a>
+        <a asp-controller="joinevent" asp-action="add" class="btn btn-success mg-b-10  pd-x-10">Add</a>
+        <a style="position: relative; padding-right:30px; margin-right" asp-controller="joinevent" asp-action="active" class="btn btn-secondary mg-b-10 pd-x-10">Active
+            <span style="margin-left: 10px;color: red; background: #00FFFF; padding: 5px 5px; border-radius: 50%; position: absolute"></span>
+        </a>
+    </div>
+    <div class="float-right">
+        <a asp-controller="joinevent" asp-action="index" class="btn btn-teal mg-b-10  pd-x-10">List</a>
         <a asp-controller="joinevent" asp-action="winner" class="btn btn-info mg-b-10 pd-x-10">List Winner</a>
     </div>
 

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedObjects.Commons;
@@ -27,6 +28,8 @@ namespace API.Controllers
         {
             return Ok(await _prizeDistributionService.GetById(id));
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("add")]
         public async Task<ResponseResult> Add(PrizeDistributionViewModel model)
@@ -38,6 +41,8 @@ namespace API.Controllers
             }
             return new ResponseResult(200, "Add success");
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpPut]
         [Route("update")]
         public async Task<ResponseResult> Update(PrizeDistributionViewModel model)
@@ -49,6 +54,8 @@ namespace API.Controllers
             }
             return new ResponseResult(200, "Update success");
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpDelete]
         [Route("delete/{id}")]
         public async Task<ResponseResult> Delete(string id)
