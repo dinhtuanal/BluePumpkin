@@ -7,6 +7,8 @@ using SharedObjects.ViewModels;
 
 namespace API.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : ControllerBase

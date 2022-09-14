@@ -9,7 +9,7 @@ using SharedObjects.ViewModels;
 
 namespace API.Controllers
 {
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class EventsController : ControllerBase
@@ -21,6 +21,8 @@ namespace API.Controllers
             _eventService = eventService;
             _fileStorageHelper = fileStorageHelper;
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("add")]
         public async Task<ResponseResult> Add( EventViewModel model)
@@ -40,7 +42,8 @@ namespace API.Controllers
             var result = _eventService.GetAll();
             return Ok(result);
         }
-
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpPut]
         [Route("update")]
         public async Task<ResponseResult> Update(EventViewModel model)
@@ -59,6 +62,8 @@ namespace API.Controllers
             var result = await _eventService.GetById(id);
             return Ok(result);
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "admin")]
         [HttpDelete]
         [Route("delete/{id}")]
         public async Task<ResponseResult> Delete(string id)
