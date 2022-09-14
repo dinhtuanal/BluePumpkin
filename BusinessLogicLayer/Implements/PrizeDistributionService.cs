@@ -35,13 +35,13 @@ namespace BusinessLogicLayer.Implements
             var prize = await _context.Prizes.FindAsync(Guid.Parse(model.PrizeId));
             if (prize != null)
             {
-                prize.Distributed += 1;
-                prize.Amount -= 1;
+                prize.Distributed += model.Amount;
+                prize.Amount -= model.Amount;
             }
             var jevent = await _context.JoinEvents.FindAsync(Guid.Parse(model.JoinEventId));
             if(jevent != null)
             {
-                jevent.JoinEventStatus = 0;   
+                jevent.JoinEventStatus = JoinEventStatus.Won;   
             }
             return await _context.SaveChangesAsync();
 
