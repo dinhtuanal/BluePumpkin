@@ -11,175 +11,23 @@
 </div><!-- slim-pageheader -->
 
 <div class="row row-sm">
-    <div class="col-lg-8">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
         <div class="card card-profile">
-            <div class="card-body">
+            <div class="card-body p-5">
                 <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
                     <div class="media-body">
                         <h3 class="card-profile-name">@Model.FirstName @Model.LastName</h3>
                         <p class="card-profile-position">Email: <a href="mailto: @Model.Email">@Model.Email</a></p>
                         Birthday: <input style="background: none; border: none; margin: 15px 0px;" disabled="disabled" type="date" asp-for="@Model.BirtthDay" />
-                        <p>@Model.Country</p>
+                        <p>Username: @Model.UserName</p>
+                        <p>Country: @Model.Country</p>
                         <p>Gender: @Model.Gender</p>
                         <p>Phone: @Model.PhoneNumber</p>
-
                     </div><!-- media-body -->
                 </div><!-- media -->
             </div><!-- card-body -->
-            <div class="card-footer">
-                <div>
-                    <a href="">Edit Profile</a>
-                    <a href="">Profile Settings</a>
-                </div>
-            </div><!-- card-footer -->
         </div><!-- card -->
-
-        <ul class="nav nav-activity-profile mg-t-20">
-            <li class="nav-item"><a href="" class="nav-link"><i class="icon ion-ios-redo tx-purple"></i> Share an update</a></li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="icon ion-image tx-primary"></i> Publish photo</a></li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="icon ion-document-text tx-success"></i> Add an article</a></li>
-        </ul><!-- nav -->
-
-    </div><!-- col-8 -->
-
-    <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-        <div class="card card-connection">
-            <div class="row row-xs">
-                <div class="col-4 tx-primary">129</div>
-                <div class="col-8">people viewed your profile in the past 90 days</div>
-            </div><!-- row -->
-            <hr>
-            <div class="row row-xs">
-                <div class="col-4 tx-purple">845</div>
-                <div class="col-8">
-                    connections <br>
-                    <a href="">Grow your network</a>
-                </div>
-            </div><!-- row -->
-        </div><!-- card -->
-
-        <div class="card card-people-list mg-t-20">
-            <div class="slim-card-title">People also viewed</div>
-            <div class="media-list">
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Adrian Monino</a>
-                        <p>Software Engineer</p>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Rolando Paloso</a>
-                        <p>Architect</p>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Joyce Chua</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Annalyn Mercado</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Maricel Pasilbas</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-            </div><!-- media-list -->
-        </div><!-- card -->
-
-        <div class="card card-people-list mg-t-20">
-            <div class="slim-card-title">People you may know</div>
-            <div class="media-list">
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Amber Heard</a>
-                        <p>Software Engineer</p>
-                    </div><!-- media-body -->
-                    <a href=""><i class="icon ion-person-add tx-20"></i></a>
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Richard Salomon</a>
-                        <p>Architect</p>
-                    </div><!-- media-body -->
-                    <a href=""><i class="icon ion-person-add tx-20"></i></a>
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Warren Vito</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                    <a href=""><i class="icon ion-person-add tx-20"></i></a>
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Charlene Plateros</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                    <a href=""><i class="icon ion-person-add tx-20"></i></a>
-                </div><!-- media -->
-                <div class="media">
-                    <img src="http://via.placeholder.com/500x500" alt="">
-                    <div class="media-body">
-                        <a href="">Allan Palban</a>
-                        <p>Sales Representative</p>
-                    </div><!-- media-body -->
-                    <a href=""><i class="icon ion-person-add tx-20"></i></a>
-                </div><!-- media -->
-            </div><!-- media-list -->
-        </div><!-- card -->
-
-        <div class="card pd-25 mg-t-20">
-            <div class="slim-card-title">Contact &amp; Personal Info</div>
-
-            <div class="media-list mg-t-25">
-                <div class="media">
-                    <div><i class="icon ion-link tx-24 lh-0"></i></div>
-                    <div class="media-body mg-l-15 mg-t-4">
-                        <h6 class="tx-14 tx-gray-700">Websites</h6>
-                        <a href="" class="d-block">http://themepixels.me</a>
-                        <a href="" class="d-block">http://themeforest.net</a>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media mg-t-25">
-                    <div><i class="icon ion-ios-telephone-outline tx-24 lh-0"></i></div>
-                    <div class="media-body mg-l-15 mg-t-4">
-                        <h6 class="tx-14 tx-gray-700">Phone Number</h6>
-                        <span class="d-block">+1 234 5678 910</span>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media mg-t-25">
-                    <div><i class="icon ion-ios-email-outline tx-24 lh-0"></i></div>
-                    <div class="media-body mg-l-15 mg-t-4">
-                        <h6 class="tx-14 tx-gray-700">Email Address</h6>
-                        <span class="d-block">yourname@sample.com</span>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-                <div class="media mg-t-25">
-                    <div><i class="icon ion-social-twitter tx-18 lh-0"></i></div>
-                    <div class="media-body mg-l-15 mg-t-2">
-                        <h6 class="tx-14 tx-gray-700">Twitter</h6>
-                        <a href="#" class="d-block">themepixels</a>
-                    </div><!-- media-body -->
-                </div><!-- media -->
-            </div><!-- media-list -->
-        </div><!-- card -->
-    </div><!-- col-4 -->
+    </div><!-- col-6 -->
+    <div class="col-lg-3"></div>
 </div><!-- row -->
